@@ -1,0 +1,50 @@
+body {
+	margin: 0;
+}
+
+header {
+	border-bottom: 1px solid black;
+	padding: 1em;
+}
+
+h1 {
+	display: inline;
+	padding: 1em;
+}
+
+form {
+	float: right;
+	margin-top: 0.5em;
+}
+/*
+#jumbotron img{
+	margin: 0;
+	padding: 0;
+	z-index: 0;
+	width: 100%;
+}*/
+
+#jumbotron {
+	background-image: url("../images/intro.png");
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
+	margin: 0;
+	/*text-align: center;*/
+}
+
+#jumbotron button{
+	top: 50%;
+	left: 45%;
+	position: absolute;
+	background-color: #284e8c;
+	color: white;
+	font-size: 1em;
+	padding: 1.5em 2.5em;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+
+#jumbotron button:active {
+	border: 0;
+}
