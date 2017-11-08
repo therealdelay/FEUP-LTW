@@ -11,5 +11,5 @@
 	<header>
 		<i class="fa fa-list fa-2x" aria-hidden="true"></i>
 		<h1>To Do</h1>
-	<?php include_once('templates/common/user.php'); ?>
+		<?php include_once('templates/common/user.php'); ?>
 	</header>
