@@ -12,9 +12,8 @@ h1 {
 	padding: 1em;
 }
 
-form {
+#user {
 	float: right;
-	margin-top: 0.5em;
 }
 /*
 #jumbotron img{
