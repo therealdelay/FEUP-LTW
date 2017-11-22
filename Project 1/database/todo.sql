@@ -19,9 +19,9 @@ CREATE TABLE lists (
 );
 
 CREATE TABLE todos (
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	todo_id INTEGER PRIMARY KEY AUTOINCREMENT,
 	name VARCHAR NOT NULL,
-	limit_date DATE
+	limit_date DATE,
 	list_id INTEGER REFERENCES lists NOT NULL
 );
 
@@ -34,11 +34,11 @@ CREATE TABLE hasItems(
 CREATE TABLE belongs (
 	list_id INTEGER REFERENCES lists NOT NULL, 
 	usr_id INTEGER REFERENCES users NOT NULL,
-	PRIMARY KEY(todo_id, usr_id)
+	PRIMARY KEY(list_id, usr_id)
 );
 
 CREATE TABLE hasCategories (
-	list_id INTEGER REFERENCES lists NOT NULL
+	list_id INTEGER REFERENCES lists NOT NULL,
 	cat_id INTEGER REFERENCES categories NOT NULL,
 	PRIMARY KEY(list_id, cat_id)
 );
@@ -51,9 +51,13 @@ INSERT INTO categories VALUES (NULL, 'Javascript');
 INSERT INTO lists VALUES (NULL, 'Projeto LTW', 2);
 INSERT INTO lists VALUES (NULL, 'Projeto LAIG', 1);
 INSERT INTO todos VALUES (NULL, 'Fazer Landing Page', '2017-11-27', 1);
+INSERT INTO todos VALUES (NULL, 'Mostrar os Todos', '2017-11-27', 1);
+INSERT INTO todos VALUES (NULL, 'Fazer tudo bonito', '2017-11-27', 1);
 INSERT INTO todos VALUES (NULL, 'Fazer Animações', '2018-01-01', 2);
 INSERT INTO hasItems VALUES (1,1);
-INSERT INTO hasItems VALUES (2,2);
+INSERT INTO hasItems VALUES (1,2);
+INSERT INTO hasItems VALUES (1,3);
+INSERT INTO hasItems VALUES (2,4);
 INSERT INTO belongs VALUES (1,1);
 INSERT INTO belongs VALUES (1,2);
 INSERT INTO belongs VALUES (2,1);
