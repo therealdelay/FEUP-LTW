@@ -4,6 +4,12 @@
 	include_once('database/list.php');
 
 	$lists = getAllLists($_SESSION['username']);
+
+	$categories = array();
+	foreach ($lists as $list) {
+		$categories[$list['id']] = getListCategories($list['id']);
+	}
+
 	$todos = array();
 	foreach ($lists as $list) {
 		$todos[$list['id']] = getListTodos($list['id']);
