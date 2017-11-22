@@ -15,6 +15,10 @@ h1 {
 #user {
 	float: right;
 }
+
+#user:nth_child(1) {
+	margin-right: 1em;
+}
 /*
 #jumbotron img{
 	margin: 0;
