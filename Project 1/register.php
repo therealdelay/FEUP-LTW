@@ -9,5 +9,6 @@ include_once('database/user.php');
 		//}
   		header('Location: home_page.php');
 	}
+	//add something to tell that the register has failed and why
 	header('Location: index.php');
 ?>

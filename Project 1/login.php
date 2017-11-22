@@ -6,6 +6,7 @@ include_once('database/user.php');
     	setCurrentUser($_POST['username']); //includes/session.php
   		header('Location: home_page.php');
   }
+  //add something to tell that the login has failed
   header('Location: index.php');
 
 ?>

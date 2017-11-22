@@ -11,9 +11,7 @@
   	global $dbh;
   	$stmt = $dbh->prepare('SELECT * FROM user WHERE usr_username = ?');
   	$stmt->execute(array($username));
-    $user = $stmt->fetch();
-    echo $user;
-  	return $user === false;
+  	return $stmt->fetch() === false;
   }
 
   function addUser($username, $name, $email, $image, $password){
@@ -21,13 +19,6 @@
     global $dbh;
     $stmt = $dbh->prepare('INSERT INTO user (usr_username, usr_name, usr_email, usr_image, usr_password) VALUES (?, ?, ?, ?, ?)');
     $stmt->execute(array($username, $name, $email, $image, sha1($password)));
-
-    /*$stmt = $dbh->prepare('SELECT * FROM user');
-    $stmt->execute();
-    $result = $stmt->fetchAll();
-    foreach($result as $row){
-      echo $row['usr_username'];
-    }*/
   }
 
 ?>
