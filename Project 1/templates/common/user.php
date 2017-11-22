@@ -10,7 +10,7 @@
       <input type="password" placeholder="password" name="password">
       <div>
         <input type="submit" value="Login">
-        <a href="templates/user/register_form.php">Register</a>
+        <a href="templates/common/register_form.php">Register</a>
       </div>
     </form>
   <?php } ?>
