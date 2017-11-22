@@ -7,6 +7,6 @@ include_once('database/user.php');
   		header('Location: home_page.php');
   }
   //add something to tell that the login has failed
-  header('Location: index.php');
+  //header('Location: index.php');
 
 ?>

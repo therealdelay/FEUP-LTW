@@ -1,11 +1,11 @@
 <?php
 
-	function getAllTodos(){
+	function getAllTodos($username){
 		global $dbh;
-		$stmt = $dbh->prepare('SELECT * FROM todo JOIN category USING(cat_id)');
+		$stmt = $dbh->prepare("SELECT * FROM todos, users WHERE todos.usr_id = users.usr_id AND usr_username = ?");
 		/* Talvez melhorar isto mais tarde*/
 		/* Nem sei se funciona*/
-		$stmt->execute();
+		$stmt->execute(array($username));
 		return $stmt->fetchAll();
 	}
 
