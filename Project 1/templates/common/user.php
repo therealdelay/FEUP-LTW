@@ -5,10 +5,11 @@
       <input type="submit" value="Logout">
     </form>
   <?php } else { ?>
+  <!-- Turn this responsive! -->
     <form action="login.php" method="post">
       <input type="text" placeholder="username" name="username">
       <input type="password" placeholder="password" name="password">
-      <div>
+      <div id="submit_button">
         <input type="submit" value="Login">
         <a href="templates/common/register_form.php">Register</a>
       </div>

@@ -16,8 +16,8 @@ h1 {
 	float: right;
 }
 
-#user:nth_child(1) {
-	margin-right: 1em;
+#submit_button {
+	display: inline;
 }
 /*
 #jumbotron img{
