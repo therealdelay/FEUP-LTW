@@ -25,10 +25,9 @@
 
   function editUser($old_username, $new_username, $name, $email, $image, $password){
     global $dbh;
-    $stmt = $dbh->prepare('UPDATE users SET usr_name = ?, usr_email = ?, usr_image = ?, usr_password =? WHERE usr_username = ?');
-    $stmt->execute(array($name, $email, $image, sha1($password), $old_username));
-    $stmt = $dbh->prepare('UPDATE users SET usr_username = ? WHERE usr_username = ?');
-    $stmt->execute(array($new_username, $old_username));
+    $stmt = $dbh->prepare('UPDATE users SET usr_username = ?, usr_name = ?, usr_email = ?, usr_image = ?, usr_password =? WHERE usr_username = ?');
+    $stmt->execute(array($new_username, $name, $email, $image, sha1($password), $old_username));
+   // $stmt = $dbh->prepare('UPDATE users SET usr_username = ? WHERE usr_username = ?');
+  //  $stmt->execute(array($new_username, $old_username));
   }
-
 ?>
