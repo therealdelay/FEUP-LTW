@@ -1,6 +1,5 @@
 <section id="lists">
 	<?php foreach ($lists as $list) { ?>
-		<?php if()?>
 		<div class="list" class="<?= $list['priority']?>">
 			<h2><?= $list['title']?></h2>
 
