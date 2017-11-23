@@ -15,7 +15,7 @@
 		$todos[$list['id']] = getListTodos($list['id']);
 	}
 
-	include_once('templates/common/header_landing_page.php');
+	include_once('templates/common/header.php');
 	include_once('templates/todos/show_lists.php');
 	include_once('templates/common/footer.php');
 ?>

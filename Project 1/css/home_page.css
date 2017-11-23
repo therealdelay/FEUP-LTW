@@ -1,0 +1,63 @@
+body {
+	margin: 0;
+}
+
+header {
+	border-bottom: 1px solid black;
+	padding: 1em;
+}
+
+h1 {
+	display: inline;
+	padding: 1em;
+}
+
+#user {
+	float: right;
+}
+
+#submit_button {
+	display: inline;
+}
+
+/*
+	Above is same as index.css
+	Maybe change
+*/
+
+
+#lists {
+	margin: 2em;
+	display: flex;
+	justify-content: center;
+}
+
+.list {
+	border: 1px solid black;
+	margin: 0 auto;
+	padding: 1em;
+}
+
+.list h2 {
+	text-align: center;
+}
+
+.todos {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.todo {
+	border: 1px solid black;
+	margin: 1em;
+	padding: 0.5em;
+}
+
+#categories {
+	position: relative;
+}
+
+.category {
+	display: inline-block;
+}

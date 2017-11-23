@@ -1,17 +1,25 @@
-<section id="todos">
+<section id="lists">
 	<?php foreach ($lists as $list) { ?>
-		<div class="todo">
+		<?php if()?>
+		<div class="list" class="<?= $list['priority']?>">
 			<h2><?= $list['title']?></h2>
 
-			<?php foreach ($categories[$list['id']] as $cat) { ?>
-				<p><?= $cat['cat_name']?></p>
-			<?php } ?>
+			<div class="todos">
+				<?php foreach ($todos[$list['id']] as $todo) { ?>
+					<div class="todo">
+						<p><?= $todo['name']?></p>
+						<p><?= $todo['limit_date']?></p>
+					</div>
+				<?php } ?>
+			</div>
 
-			<?php foreach ($todos[$list['id']] as $todo) { ?>
-				<p><?= $todo['name']?></p>
-				<p><?= $todo['limit_date']?></p>
-			<?php } ?>
-			<!--adicionar categorias e o resto-->
+			<div class="categories">
+				<?php foreach ($categories[$list['id']] as $cat) { ?>
+					<div class="category">
+						<p><?= $cat['cat_name']?></p>
+					</div>
+				<?php } ?>
+			</div>
 		</div>
 	<?php } ?>
 </section>
