@@ -89,3 +89,20 @@ span {
 .p3 {
 	background-color: yellow;
 }
+
+
+#todos_only {
+	display: flex;
+	justify-content: center;
+}
+
+.todo_only {
+	margin: 0 auto;
+	border: 1px solid black;
+}
+
+
+#add_form {
+	display: none;
+	z-index: 1;
+}

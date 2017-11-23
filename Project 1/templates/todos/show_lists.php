@@ -1,4 +1,17 @@
+<div id="add_form">
+	<form action="../../add_list.php" method="post">
+		<label>Title
+			<input type="text" placeholder="write here..." name="name" required> 
+		</label>
+		<label>Priority
+			<input type="number" placeholder="priority" min="0" max="3" name="priority">
+		</label>
+		<input type="submit" value="Add">
+	</form>
+	</div>
 <section id="lists">
+	
+
 	<?php foreach ($lists as $list) { ?>
 
 		<?php
@@ -11,7 +24,8 @@
 				$priority = 'p3';
 		?>
 
-		<a href="list_page.php?id=<?= $list['list_id']?>"><div class="list <?= $priority?>" >
+		<a href="list_page.php?id=<?= $list['list_id']?>">
+		<div class="list <?= $priority?>" >
 			<h2><?= $list['title']?></h2>
 
 			<div class="todos">
@@ -32,4 +46,7 @@
 			</div>
 		</div></a>
 	<?php } ?>
+	<div class="list">
+		<img src="images/addIcon.png">
+	</div>
 </section>

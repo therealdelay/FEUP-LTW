@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>To Do - Add</title>
+	<title>To Do - Add Todo</title>
 	<link rel="stylesheet" type="text/css" href="../../css/register_form.css">
 </head>
 <body>
@@ -16,10 +16,6 @@
 			</label>
 			<label>Priority
 				<input type="number" placeholder="priority" min="0" max="3" name="priority">
-			</label>
-			<!-- add imput to categories-->
-			<label>Category
-				<input type="text" placeholder="category" name="category">
 			</label>
 			<input type="submit" value="Add">
 		</form>

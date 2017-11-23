@@ -25,4 +25,14 @@
 		return $stmt->fetchAll();
 	}
 
+	function addList($title, $priority) {
+		global $dbh;
+		$stmt = $dbh->prepare("INSERT INTO lists (title, priority) VALUES (?, ?)");
+		$stmt->execute(array($title, $priority));
+	}
+
+	function addTodo($name, $date, $priority, $list_id){
+		global $dbh;
+	}
+
 ?>
