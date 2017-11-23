@@ -1,14 +1,24 @@
 <section id="lists">
 	<?php foreach ($lists as $list) { ?>
-		<?php if()?>
-		<div class="list" class="<?= $list['priority']?>">
+
+		<?php
+			$priority; 
+			if($list['priority'] == 1)
+				$priority = 'p1';
+			else if($list['priority'] == 2)
+				$priority = 'p2';
+			else if($list['priority'] == 3)
+				$priority = 'p3';
+		?>
+
+		<a href="list_page.php?id=<?= $list['list_id']?>"><div class="list <?= $priority?>" >
 			<h2><?= $list['title']?></h2>
 
 			<div class="todos">
 				<?php foreach ($todos[$list['id']] as $todo) { ?>
 					<div class="todo">
 						<p><?= $todo['name']?></p>
-						<p><?= $todo['limit_date']?></p>
+						<span><?= $todo['limit_date']?></span>
 					</div>
 				<?php } ?>
 			</div>
@@ -20,6 +30,6 @@
 					</div>
 				<?php } ?>
 			</div>
-		</div>
+		</div></a>
 	<?php } ?>
 </section>
