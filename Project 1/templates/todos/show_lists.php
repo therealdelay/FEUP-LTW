@@ -1,12 +1,13 @@
 <div id="add_form">
-	<form action="../../add_list.php" method="post">
+	<form action="#" method="post">
 		<label>Title
-			<input type="text" placeholder="write here..." name="name" required> 
+			<input type="text" placeholder="write here..." name="title" required> 
 		</label>
 		<label>Priority
 			<input type="number" placeholder="priority" min="0" max="3" name="priority">
 		</label>
 		<input type="submit" value="Add">
+		<input type="submit" value="Cancel">
 	</form>
 	</div>
 <section id="lists">

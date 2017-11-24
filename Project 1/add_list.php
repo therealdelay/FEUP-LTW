@@ -4,5 +4,5 @@
 	include_once('database/list.php');
   
 	addList($_POST['title'],$_POST['priority']);
-  	header('Location: home_page.php');
+  	//header('Location: home_page.php');
 ?>
