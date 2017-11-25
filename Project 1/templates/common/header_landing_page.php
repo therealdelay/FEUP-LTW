@@ -9,7 +9,11 @@
 </head>
 <body>
 	<header>
-		<i class="fa fa-list fa-2x" aria-hidden="true"></i>
+		<?php if (isset($_SESSION['username']) && $_SESSION['username'] != '') { ?>
+			<a href="home_page.php"><i class="fa fa-list fa-2x" aria-hidden="true"></i></a>
+		<?php } else { ?>
+			<i class="fa fa-list fa-2x" aria-hidden="true"></i></a>
+		<?php } ?>
 		<h1>To Do</h1>
 		<?php include_once('templates/common/user.php'); ?>
 	</header>

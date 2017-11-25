@@ -9,7 +9,7 @@
 </head>
 <body>
 	<header>
-		<i class="fa fa-list fa-2x" aria-hidden="true"></i>
+		<a href="home_page.php"><i class="fa fa-list fa-2x" aria-hidden="true"></i></a>
 		<h1>To Do</h1>
 		<?php include_once('templates/common/user.php'); ?>
 	</header>
