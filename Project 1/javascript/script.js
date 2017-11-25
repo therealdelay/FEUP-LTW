@@ -11,10 +11,16 @@ function getForm(event){
 
 
 let addListButton = document.querySelector("input[value='Add']");
-console.log(addListButton);
+
 addListButton.addEventListener("click",function(event){
 	let request = new XMLHttpRequest();
-	//request.addEventListener("load", );
-	request.open("get", ".php?name=" + text.value, true);
+	request.addEventListener("load", listsReceived);
+	request.open("get", "show_lists.php", true);
 	request.send();
+	
 });
+
+function listsReceived(){
+	console.log(this.responseText);
+	lists.innerHTML = this.responseText;
+}

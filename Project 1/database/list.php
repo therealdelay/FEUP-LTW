@@ -25,10 +25,22 @@
 		return $stmt->fetchAll();
 	}
 
-	function addList($title, $priority) {
+	function addList($username, $title, $priority) {
 		global $dbh;
 		$stmt = $dbh->prepare("INSERT INTO lists (title, priority) VALUES (?, ?)");
 		$stmt->execute(array($title, $priority));
+
+		// CREATE TRIGGER FOR THIS?
+		$stmt = $dbh->prepare("SELECT id FROM lists WHERE lists.title = ?");
+		$stmt->execute(array($title));
+		$list_id = $stmt->fetch()['id'];
+
+		$stmt = $dbh->prepare("SELECT usr_id FROM users WHERE users.usr_username = ?");
+		$stmt->execute(array($username));
+		$usr_id = $stmt->fetch()['usr_id'];
+
+		$stmt = $dbh->prepare("INSERT INTO belongs (list_id, usr_id) VALUES (?, ?)");
+		$stmt->execute(array($list_id, $usr_id));
 	}
 
 	function addTodo($name, $date, $priority, $list_id){
