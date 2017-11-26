@@ -1,17 +1,13 @@
-<!--
 <div id="add_form">
-	<form action="" method="post">
-		<label>Title
-			<input type="text" placeholder="write here..." name="title" required> 
-		</label>
-		<label>Priority
-			<input type="number" placeholder="priority" min="0" max="3" name="priority">
-		</label>
-		<input type="submit" value="Add">
-		<input type="submit" value="Cancel">
-	</form>
+	<label>Title
+		<input type="text" placeholder="write here..." name="title" required> 
+	</label>
+	<label>Priority
+		<input type="number" placeholder="priority" min="0" max="3" name="priority">
+	</label>
+	<input type="submit" value="Add">
+	<input type="submit" value="Cancel">
 </div>
--->
 
 <section id="lists">
 	
@@ -51,6 +47,6 @@
 		</div></a>
 		<?php } ?>
 		<div class="list">
-			<a href="templates/todos/add_list_form.php"><img src="images/addIcon.png"></a>
+			<img src="images/addIcon.png">
 		</div>
 	</section>
