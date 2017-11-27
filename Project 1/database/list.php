@@ -25,7 +25,7 @@
 		return $stmt->fetchAll();
 	}
 
-	function addList($username, $title, $priority) {
+	function addList($username, $title, $priority, $category) {
 		global $dbh;
 		$stmt = $dbh->prepare("INSERT INTO lists (title, priority) VALUES (?, ?)");
 		$stmt->execute(array($title, $priority));
@@ -41,10 +41,34 @@
 
 		$stmt = $dbh->prepare("INSERT INTO belongs (list_id, usr_id) VALUES (?, ?)");
 		$stmt->execute(array($list_id, $usr_id));
+
+		$stmt = $dbh->prepare("SELECT cat_id FROM categories WHERE cat_name = ?");
+		$stmt->execute(array($category));
+		$cat_id = $stmt->fetch()['cat_id'];
+
+		$stmt = $dbh->prepare("INSERT INTO hasCategories (list_id, cat_id) VALUES (?, ?)");
+		$stmt->execute(array($list_id, $cat_id));
 	}
 
-	function addTodo($name, $date, $priority, $list_id){
+	function addTodo($name, $date, $list_id){
 		global $dbh;
+		$stmt = $dbh->prepare("INSERT INTO todos (name, limit_date, list_id) VALUES (?, ?, ?)");
+		$stmt->execute(array($name, $date, $list_id));
+
+		$stmt = $dbh->prepare("SELECT todo_id FROM todos ORDER BY todo_id DESC LIMIT 1");
+		$stmt->execute();
+		$todo_id = $stmt->fetch()['todo_id'];
+
+		$stmt = $dbh->prepare("INSERT INTO hasItems (list_id, todo_id) VALUES (?, ?)");
+		$stmt->execute(array($list_id, $todo_id));
+	}
+
+	function getAllCategories() {
+		global $dbh;
+		$stmt = $dbh->prepare("SELECT cat_name FROM categories");
+		$stmt->execute();
+
+		return $stmt->fetchAll();
 	}
 
 ?>

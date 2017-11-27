@@ -5,6 +5,9 @@
 	<label>Priority
 		<input type="number" placeholder="priority" min="0" max="3" name="priority">
 	</label>
+	<label>Categories
+		<select id="categories"></select>
+	</label>
 	<input type="submit" value="Add">
 	<input type="submit" value="Cancel">
 </div>
@@ -24,8 +27,8 @@
 		$priority = 'p3';
 	?>
 
-	<a href="list_page.php?id=<?= $list['list_id']?>">
-		<div class="list <?= $priority?>" >
+	<a href="list_page.php?list_id=<?= $list['list_id']?>">
+		<div class="list <?= $priority?>">
 			<h2><?= $list['title']?></h2>
 
 			<div class="todos">
