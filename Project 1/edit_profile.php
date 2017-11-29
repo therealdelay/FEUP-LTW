@@ -9,5 +9,5 @@
 	$image = getImage($_SESSION['username'])['usr_image'];
 	$password = getPassword($_SESSION['username'])['usr_password'];
 
-	include_once('edit_form.php');
+	include_once('templates/user/edit_form.php');
 ?>
