@@ -11,7 +11,7 @@
       <input type="password" placeholder="password" name="password">
       <div id="submit_button">
         <input type="submit" value="Login">
-        <a href="templates/common/register_form.php">Register</a>
+        <input type="button" value="Register" onclick="location.href='templates/common/register_form.php';" />      
       </div>
     </form>
   <?php } ?>

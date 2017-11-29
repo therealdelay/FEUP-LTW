@@ -13,8 +13,5 @@
 		<h1>To Do</h1>
 		<?php include_once('templates/common/user.php'); ?>
 	</header>
-	
-	<h2>John</h2>
-	<img src="images/intro.png" alt="ProfilePic" width="300" height="200">
-	<br>
-	<a href="edit_profile.php">Edit profile</a>
+
+	<?php include_once('templates/common/show_profile.php'); ?>
