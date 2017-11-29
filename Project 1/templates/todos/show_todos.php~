@@ -9,17 +9,6 @@
 	<input type="submit" value="Cancel">
 </div>
 
-<div id="edit_form">
-	<label>What do you have to do?
-		<input type="text" placeholder="write here..." name="name" required>
-	</label>
-	<label>Limit Date
-		<input type="date" placeholder="limit date" name="date" required>
-	</label>
-	<input type="submit" value="Save">
-	<input type="submit" value="Cancel">
-</div>
-
 <section id="todos_only">
 	<?php foreach ($todos as $todo) { ?>
 	<div id=<?= $todo['todo_id']?> class="todo_only">
