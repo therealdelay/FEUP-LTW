@@ -126,3 +126,16 @@ span {
 #add_form > * {
 	margin: auto;
 }
+
+#edit_form {
+	border-style: solid;
+	background-color: bisque;
+	padding: 2em;
+	width: 50%;
+	height:25%;
+	left: 25%;
+	top: 50%;
+	position: absolute;
+	z-index: 1;
+	display:none;
+}
