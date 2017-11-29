@@ -93,4 +93,10 @@
 		$stmt->execute(array($list_id, $todo_id, $list_id));
 	}
 
+	function statusTodo($todo_id){
+		global $dbh;
+		$stmt = $dbh->prepare("UPDATE todos SET done = done*-1 WHERE todo_id = ?");
+		$stmt->execute(array($todo_id));
+	}
+
 ?>
