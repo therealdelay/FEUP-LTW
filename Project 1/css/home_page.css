@@ -29,7 +29,15 @@ h1 {
 #lists {
 	margin: 2em;
 	display: flex;
-	justify-content: center;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+#lists > * {
+	display: inline-block;
+	flex-grow: 1;
+    margin: 1em 1em;
+    width: 20%;
 }
 
 a {
@@ -103,6 +111,31 @@ span {
 
 
 #add_form {
-	display: none;
+	border-style: solid;
+	background-color: bisque;
+	padding: 2em;
+	width: 50%;
+	height:25%;
+	left: 25%;
+	top: 50%;
+	position: absolute;
 	z-index: 1;
+	display:none;
+}
+
+#add_form > * {
+	margin: auto;
+}
+
+#edit_form {
+	border-style: solid;
+	background-color: bisque;
+	padding: 2em;
+	width: 50%;
+	height:25%;
+	left: 25%;
+	top: 50%;
+	position: absolute;
+	z-index: 1;
+	display:none;
 }
