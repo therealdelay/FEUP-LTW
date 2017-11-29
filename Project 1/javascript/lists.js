@@ -27,19 +27,23 @@ let addListButton = document.querySelector("input[value='Add']");
 let cancelListButton = document.querySelector("input[value='Cancel']");
 
 let addNewCategoryActivated = 0;
+let maxNewCategory = 3;
+let countNewCategory = 0;
 
 /**
 	Event that triggers when the user wants to add a new category. It adds a new input field
 */
 addCategoryButton.addEventListener("click", function(event){
-
-	addNewCategoryActivated = 1;
-	let divNewCategories = document.getElementById("new_categories");
-	let newInput = document.createElement("input");
-	newInput.setAttribute("type", "text");
-	newInput.setAttribute("placeholder", "new category");
-	newInput.setAttribute("name", "category");
-	divNewCategories.appendChild(newInput);
+	if(countNewCategory < maxNewCategory){
+		addNewCategoryActivated = 1;
+		let divNewCategories = document.getElementById("new_categories");
+		let newInput = document.createElement("input");
+		newInput.setAttribute("type", "text");
+		newInput.setAttribute("placeholder", "new category");
+		newInput.setAttribute("name", "category");
+		divNewCategories.appendChild(newInput);
+		countNewCategory++;
+	}
 });
 
 /**

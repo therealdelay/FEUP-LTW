@@ -84,8 +84,13 @@
 		global $dbh;
 		$stmt = $dbh->prepare("SELECT cat_name FROM categories");
 		$stmt->execute();
-
 		return $stmt->fetchAll();
+	}
+
+	function removeTodo($todo_id, $list_id){
+		global $dbh;
+		$stmt = $dbh->prepare("DELETE FROM hasItems, todos WHERE hasItems.list_id = ? AND hasItems.todo_id = ? AND todos.todo_id = ?");
+		$stmt->execute(array($list_id, $todo_id, $list_id));
 	}
 
 ?>

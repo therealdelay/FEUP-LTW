@@ -6,7 +6,7 @@
 		<input type="number" placeholder="priority" min="0" max="3" name="priority">
 	</label>
 	<label>Categories
-		<select id="categories" multiple></select>
+		<select id="categories" size="4" multiple></select>
 	</label>
 	<button id="add_category">Add New Category</button>
 	<div id="new_categories">
