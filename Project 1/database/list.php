@@ -25,7 +25,7 @@
 		return $stmt->fetchAll();
 	}
 
-	function addList($username, $title, $priority, $category) {
+	function addList($username, $title, $priority, $categories) {
 		global $dbh;
 		$stmt = $dbh->prepare("INSERT INTO lists (title, priority) VALUES (?, ?)");
 		$stmt->execute(array($title, $priority));
@@ -42,12 +42,29 @@
 		$stmt = $dbh->prepare("INSERT INTO belongs (list_id, usr_id) VALUES (?, ?)");
 		$stmt->execute(array($list_id, $usr_id));
 
-		$stmt = $dbh->prepare("SELECT cat_id FROM categories WHERE cat_name = ?");
-		$stmt->execute(array($category));
-		$cat_id = $stmt->fetch()['cat_id'];
+		//Add new categories or not
+		$cat_ids = array();
+		foreach($categories as $cat){
+			$stmt = $dbh->prepare("SELECT cat_id FROM categories WHERE cat_name = ?");
+			$stmt->execute(array($cat));
+			$cat_id = $stmt->fetch()['cat_id'];
 
-		$stmt = $dbh->prepare("INSERT INTO hasCategories (list_id, cat_id) VALUES (?, ?)");
-		$stmt->execute(array($list_id, $cat_id));
+			if($cat_id == null){
+				$stmt = $dbh->prepare("INSERT INTO categories (cat_name) VALUES (?)");
+				$stmt->execute(array($cat));
+
+				// IMPROVE THIS
+				$stmt = $dbh->prepare("SELECT cat_id FROM categories ORDER BY cat_id DESC LIMIT 1");
+				$stmt->execute();
+				$cat_id = $stmt->fetch()['cat_id'];
+			}
+			$cat_ids[] = $cat_id;
+		}
+
+		foreach($cat_ids as $cat_id){
+			$stmt = $dbh->prepare("INSERT INTO hasCategories (list_id, cat_id) VALUES (?, ?)");
+			$stmt->execute(array($list_id, $cat_id));
+		}
 	}
 
 	function addTodo($name, $date, $list_id){
