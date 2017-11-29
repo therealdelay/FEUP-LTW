@@ -16,6 +16,6 @@
 	}
 
 	include_once('templates/common/header_profile_page.php');
-	//include_once('templates/common/show_profile.php');
+	include_once('templates/common/show_profile.php');
 	include_once('templates/common/footer.php');
 ?>

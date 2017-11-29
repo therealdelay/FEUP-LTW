@@ -13,5 +13,3 @@
 		<h1>To Do</h1>
 		<?php include_once('templates/common/user.php'); ?>
 	</header>
-
-	<?php include_once('templates/common/show_profile.php'); ?>
