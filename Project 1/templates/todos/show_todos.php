@@ -11,11 +11,12 @@
 
 <section id="todos_only">
 	<?php foreach ($todos as $todo) { ?>
-	<div class="todo_only">
+	<div id=<?= $todo['todo_id']?> class="todo_only">
 		<p><?= $todo['name']?></p>
 		<span><?= $todo['limit_date']?></span>
-		<a href="#"><button>Edit</button></a>
-		<a href="#"><button>Done</button></a>
+		<a href="#"><button name="Edit">Edit</button></a>
+		<a href="#"><button name="Done">Done</button></a>
+		<a href="#"><button name="Remove">Remove</button></a>
 	</div>
 	<?php } ?>
 	<div class="todo_only">

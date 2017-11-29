@@ -89,8 +89,10 @@
 
 	function removeTodo($todo_id, $list_id){
 		global $dbh;
-		$stmt = $dbh->prepare("DELETE FROM hasItems, todos WHERE hasItems.list_id = ? AND hasItems.todo_id = ? AND todos.todo_id = ?");
-		$stmt->execute(array($list_id, $todo_id, $list_id));
+		$stmt = $dbh->prepare("DELETE FROM hasItems WHERE list_id = ? AND todo_id = ?");
+		$stmt->execute(array($list_id, $todo_id));
+		$stmt = $dbh->prepare("DELETE FROM todos WHERE todo_id = ?");
+		$stmt->execute(array($todo_id));
 	}
 
 	function statusTodo($todo_id){
