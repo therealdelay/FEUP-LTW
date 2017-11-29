@@ -17,7 +17,6 @@
   }
 
   function addUser($username, $name, $email, $image, $password){
-    echo $username;
     global $dbh;
     $stmt = $dbh->prepare('INSERT INTO users (usr_username, usr_name, usr_email, usr_image, usr_password) VALUES (?, ?, ?, ?, ?)');
     $stmt->execute(array($username, $name, $email, $image, sha1($password)));

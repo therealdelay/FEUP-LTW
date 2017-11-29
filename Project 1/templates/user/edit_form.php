@@ -10,19 +10,19 @@
 		<form action="edit.php" method="post">
 			<legend>Edit Profile</legend>
 			<label>Old username
-				<input type="text" placeholder="username" name="old_username" value=<?php echo $old_username ?> required disabled> 
+				<input type="text" placeholder="username" name="old_username" value=<?= $old_username ?> required disabled> 
 			</label>
 			<label>New username
-				<input type="text" placeholder="username" name="new_username" value=<?php echo $new_username ?> required> 
+				<input type="text" placeholder="username" name="new_username" value=<?= $new_username ?> required> 
 			</label>
 			<label>New name
-				<input type="text" placeholder="name" name="name" value=<?php echo $name?> required>
+				<input type="text" placeholder="name" name="name" value=<?= $name?> required>
 			</label>
 			<label>New e-mail
-				<input type="email" placeholder="e-mail" name="email" value=<?php echo $email?> required>
+				<input type="email" placeholder="e-mail" name="email" value=<?= $email?> required>
 			</label>
 			<label>New image URL
-				<input type="text" placeholder="image URL" name="image" value=<?php echo $image?> required>
+				<input type="text" placeholder="image URL" name="image" value=<?= $image?> required>
 			</label>
 			<label>Current password
 				<input type="password" placeholder="password" name="old_password" required>
