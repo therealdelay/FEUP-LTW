@@ -1,0 +1,174 @@
+body {
+	background-image: url("../images/intro.png");
+	background-size: cover;
+	margin: 0;
+}
+
+header {
+	color: white;
+	padding: 1em;
+}
+
+h1 {
+	display: inline;
+	color: white;
+	padding: 1em;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+#user {
+	float: right;
+}
+
+#submit_button {
+	display: inline;
+}
+
+#lists a {
+	text-decoration: none;
+	color: black;
+}
+
+#lists {
+	margin: 2em;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+#lists > * {
+
+	display: inline-block;
+	flex-grow: 1;
+    margin: 1em 1em;
+    width: 20%;
+}
+
+.list {
+	background-color: white;
+	padding: 1em;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px 5px #888888;
+}
+
+.list h2 {
+	text-align: center;
+	border-radius: 10px;
+}
+
+.list img {
+	width: 150px;
+	height: 150px;
+}
+
+
+.todos {
+	display: block;
+	margin: 0 1em;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px 5px #888888;
+}
+
+.todo {
+	background-color: white;
+	position: relative;
+	padding: 0.5em;
+}
+
+.todo:first-child {
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+.todo:last-child {
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+.todo p {
+	display: inline;
+}
+
+span {
+	margin-left: 2em;
+	float: right;
+}
+
+#categories {
+	position: relative;
+}
+
+.category {
+	display: inline-block;
+}
+
+.p1 {
+	background-color: red;
+}
+
+.p2 {
+	background-color: orange;
+}
+
+.p3 {
+	background-color: yellow;
+}
+
+#todos_only {
+	padding-top: 10em;
+	display: flex;
+	justify-content: center;
+}
+
+.todo_only {
+	background-color: white;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 0 auto;
+	border: 1px solid #888888;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px 5px #888888;
+}
+
+.todo_only img {
+	width: 100px;
+	height: 100px;
+}
+
+#add_form {
+	border-style: solid;
+	background-color: bisque;
+	padding: 2em;
+	width: 50%;
+	height:25%;
+	left: 25%;
+	top: 50%;
+	position: absolute;
+	z-index: 1;
+	display:none;
+}
+
+#add_form > * {
+	margin: auto;
+}
+
+#edit_form {
+	border-style: solid;
+	background-color: bisque;
+	padding: 2em;
+	width: 50%;
+	height:25%;
+	left: 25%;
+	top: 50%;
+	position: absolute;
+	z-index: 1;
+	display:none;
+}
+
+.check {
+	background-color: green; 
+}
