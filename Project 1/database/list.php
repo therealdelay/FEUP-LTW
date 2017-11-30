@@ -31,8 +31,8 @@
 		$stmt->execute(array($title, $priority));
 
 		// CREATE TRIGGER FOR THIS?
-		$stmt = $dbh->prepare("SELECT id FROM lists WHERE lists.title = ?");
-		$stmt->execute(array($title));
+		$stmt = $dbh->prepare("SELECT id FROM lists ORDER BY id DESC LIMIT 1");
+		$stmt->execute();
 		$list_id = $stmt->fetch()['id'];
 
 		$stmt = $dbh->prepare("SELECT usr_id FROM users WHERE users.usr_username = ?");
