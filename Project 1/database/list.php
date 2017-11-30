@@ -99,6 +99,9 @@
 		global $dbh;
 		$stmt = $dbh->prepare("UPDATE todos SET done = done*-1 WHERE todo_id = ?");
 		$stmt->execute(array($todo_id));
+		$stmt = $dbh->prepare("SELECT done FROM todos WHERE todo_id = ?");
+		$stmt->execute(array($todo_id));
+		return $stmt->fetch()['done'];
 	}
 
 	function editAllTodo($todo_id, $name, $date){

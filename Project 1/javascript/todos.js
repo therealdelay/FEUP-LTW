@@ -8,6 +8,7 @@ let list_id = pathArray[1].split('=')[1][0];
 
 let selectedTodoId = null;
 
+let selectedTodo = null;
 /**
 	Event to get the form once the add list button is clicked
 */
@@ -29,14 +30,8 @@ function getEditForm(){
 function addRemoveButtonsListeners(){
 	for(let i = 0; i < todoRemoveButtons.length; i++){
 		todoRemoveButtons[i].addEventListener("click",function(){
-			/*
-			console.log(list_id);
-			console.log(this.parentNode.parentNode.id);
-			*/
 			let request = new XMLHttpRequest();
 			request.addEventListener("load", todoRemoved);
-			let link = "remove_todo.php?list_id="+list_id+"&todo_id="+this.parentNode.parentNode.id;
-			console.log(link);
 			request.open("get", "remove_todo.php?list_id="+list_id+"&todo_id="+this.parentNode.parentNode.id, true);
 			request.send();
 			//this.parentNode.parentNode.remove();
@@ -58,6 +53,7 @@ function addEditButtonsListeners(){
 function addDoneButtonsListeners(){
 	for(let i = 0; i < todoDoneButtons.length; i++){
 		todoDoneButtons[i].addEventListener("click",function(){
+			selectedTodo = this.parentNode.parentNode;
 			let request = new XMLHttpRequest();
 			request.addEventListener("load", todoUpdated);
 			request.open("get", "update_todo.php?todo_id="+this.parentNode.parentNode.id, true);
@@ -120,10 +116,12 @@ cancelTodoButton.addEventListener("click",function(event){
 //Edit Form Buttons Listeners
 
 saveTodoEditButton.addEventListener("click",function(event){
+	/*
 	console.log("saved");
 	console.log(todoEditNameText.value);
 	console.log(todoEditDateText.value);
 	console.log(selectedTodoId);
+	*/
 	let request = new XMLHttpRequest();
 	request.addEventListener("load", todosEdited);
 	request.open("get", "edit_todo.php?name="+todoEditNameText.value+"&date="+todoEditDateText.value+"&list_id="+list_id+"&todo_id="+selectedTodoId, true);
@@ -136,12 +134,22 @@ cancelTodoEditButton.addEventListener("click",function(event){
 });
 
 function todoRemoved(){
-	console.log(this.responseText);
 	location.reload();
 }
 
 function todoUpdated(){
-	location.reload();
+	let status = this.responseText;
+	checkButton = selectedTodo.childNodes[7].childNodes[0];
+	
+	if(status == "1"){
+		selectedTodo.style.backgroundColor = "green";
+		checkButton.innerHTML = "Uncheck";
+	}
+	else{
+		selectedTodo.style.backgroundColor = "white";
+		checkButton.innerHTML = "Check";
+	}
+	//location.reload();
 }
 
 /**

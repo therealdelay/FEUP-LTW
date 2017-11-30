@@ -16,6 +16,25 @@
 	<input type="submit" value="Cancel">
 </div>
 
+
+<div id="edit_form">
+	<label>Title
+		<input type="text" placeholder="write here..." name="title" required> 
+	</label>
+	<label>Priority
+		<input type="number" placeholder="priority" min="0" max="3" name="priority">
+	</label>
+	<label>Categories
+		<select id="categories" size="4" multiple></select>
+	</label>
+	<button id="add_category">Add New Category</button>
+	<div id="new_categories">
+		
+	</div>
+	<input type="submit" value="Add">
+	<input type="submit" value="Cancel">
+</div>
+
 <section id="lists">
 	
 
@@ -51,9 +70,13 @@
 				</div>
 				<?php } ?>
 			</div>
-		</div></a>
+			
+			<button name="Edit">Edit</button>
+			<button name="Remove">Remove</button>
+		</div>
+	</a>
 		<?php } ?>
 		<div class="list">
 			<img src="images/addIcon.png">
 		</div>
-	</section>
+</section>
