@@ -30,7 +30,6 @@
 		$stmt = $dbh->prepare("INSERT INTO lists (title, priority) VALUES (?, ?)");
 		$stmt->execute(array($title, $priority));
 
-		// CREATE TRIGGER FOR THIS?
 		$stmt = $dbh->prepare("SELECT id FROM lists ORDER BY id DESC LIMIT 1");
 		$stmt->execute();
 		$list_id = $stmt->fetch()['id'];
@@ -65,6 +64,29 @@
 			$stmt = $dbh->prepare("INSERT INTO hasCategories (list_id, cat_id) VALUES (?, ?)");
 			$stmt->execute(array($list_id, $cat_id));
 		}
+	}
+
+	function removeList($list_id, $username){
+		global $dbh;
+		$stmt = $dbh->prepare("DELETE FROM belongs WHERE belongs.list_id = ? AND belongs.usr_id = 
+								(SELECT usr_id FROM users WHERE usr_username = ?");
+		$stmt->execute(array($list_id, $username));
+	}
+
+	function editList($list_id, $title, $priority, $categories){
+		global $dbh;
+		$stmt = $dbh->prepare("SELECT id FROM lists ORDER BY id DESC LIMIT 1");
+		$stmt->execute();
+		$list_id = $stmt->fetch()['id'];
+
+		$stmt = $dbh->prepare("UPDATE lists SET title = ?, priority = ? WHERE id = ?");
+		$stmt->execute(array($title, $priority, $list_id));
+
+		$stmt = $dbh->prepare("SELECT cat_name FROM categories");
+		$stmt->execute();
+		$ex_cat = $stmt->fetchAll()['cat_name'];
+		//acabar
+
 	}
 
 	function addTodo($name, $date, $list_id){
