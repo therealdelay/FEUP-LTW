@@ -56,7 +56,10 @@ function addEditButtonsListeners(){
 function addDoneButtonsListeners(){
 	for(let i = 0; i < todoDoneButtons.length; i++){
 		todoDoneButtons[i].addEventListener("click",function(){
-			console.log("Done");
+			let request = new XMLHttpRequest();
+			request.addEventListener("load", todoUpdated);
+			request.open("get", "update_todo.php?todo_id="+this.parentNode.parentNode.id, true);
+			request.send();
 		});
 	}
 }
@@ -80,7 +83,7 @@ let cancelTodoEditButton = document.querySelector("#edit_form input[value='Cance
 
 // Todos Selectors
 let todoEditButtons = document.querySelectorAll(".todo_only button[name='Edit']");
-let todoDoneButtons = document.querySelectorAll(".todo_only button[name='Done']");
+let todoDoneButtons = document.querySelectorAll(".todo_only button[name='Check']");
 let todoRemoveButtons = document.querySelectorAll(".todo_only button[name='Remove']");
 
 
@@ -134,6 +137,10 @@ cancelTodoEditButton.addEventListener("click",function(event){
 
 function todoRemoved(){
 	console.log(this.responseText);
+	location.reload();
+}
+
+function todoUpdated(){
 	location.reload();
 }
 
