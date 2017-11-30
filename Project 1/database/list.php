@@ -101,4 +101,26 @@
 		$stmt->execute(array($todo_id));
 	}
 
+	function editAllTodo($todo_id, $name, $date){
+		global $dbh;
+		$stmt = $dbh->prepare("UPDATE todos SET name = ?, limit_date = ? WHERE todo_id = ?");
+		$stmt->execute(array($name, $date, $todo_id));
+
+		$stmt = $dbh->prepare("SELECT name FROM todos WHERE todo_id = ?");
+		$stmt->execute(array($todo_id));
+		return $stmt->fetch()['name'];
+	}
+
+	function editDateTodo($todo_id, $date){
+		global $dbh;
+		$stmt = $dbh->prepare("UPDATE todos SET limit_date = ? WHERE todo_id = ?");
+		$stmt->execute(array($date, $todo_id));
+	}
+
+	function editNameTodo($todo_id, $name){
+		global $dbh;
+		$stmt = $dbh->prepare("UPDATE todos SET name = ? WHERE todo_id = ?");
+		$stmt->execute(array($name, $todo_id));
+	}
+
 ?>
