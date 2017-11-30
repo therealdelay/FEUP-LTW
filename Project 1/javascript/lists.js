@@ -66,12 +66,11 @@ function addRemoveButtonsListeners(){
 	for(let i = 0; i < listRemoveButtons.length; i++){
 		listRemoveButtons[i].addEventListener("click",function(event){
 			event.preventDefault();
-			/*
 			let request = new XMLHttpRequest();
-			request.addEventListener("load", todoRemoved);
-			request.open("get", "remove_todo.php?list_id="+list_id+"&todo_id="+this.parentNode.parentNode.id, true);
+			request.addEventListener("load", listRemoved);
+			request.open("get", "remove_list.php?list_id="+this.parentNode.id, true);
 			request.send();
-			*/
+			
 			//this.parentNode.parentNode.remove();
 		});
 	}
@@ -160,6 +159,10 @@ cancelListButton.addEventListener("click",function(event){
 */
 function listsReceived(){
 	lists.style.opacity = "1";
+	location.reload();
+}
+
+function listRemoved() {
 	location.reload();
 }
 

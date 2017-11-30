@@ -69,7 +69,7 @@
 	function removeList($list_id, $username){
 		global $dbh;
 		$stmt = $dbh->prepare("DELETE FROM belongs WHERE belongs.list_id = ? AND belongs.usr_id = 
-								(SELECT usr_id FROM users WHERE usr_username = ?");
+								(SELECT usr_id FROM users WHERE usr_username = ?)");
 		$stmt->execute(array($list_id, $username));
 	}
 

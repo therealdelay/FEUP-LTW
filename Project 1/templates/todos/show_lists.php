@@ -51,7 +51,7 @@
 	?>
 
 	<a href="list_page.php?list_id=<?= $list['list_id']?>">
-		<div class="list <?= $priority?>">
+		<div id=<?= $list['id']?> class="list <?= $priority?>">
 			<h2><?= $list['title']?></h2>
 
 			<div class="todos">
