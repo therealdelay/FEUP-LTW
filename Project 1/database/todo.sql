@@ -22,7 +22,7 @@ CREATE TABLE todos (
 	todo_id INTEGER PRIMARY KEY AUTOINCREMENT,
 	name VARCHAR NOT NULL,
 	limit_date DATE,
-	done INTEGER DEFAULT(0),
+	done INTEGER DEFAULT(-1),
 	list_id INTEGER REFERENCES lists NOT NULL
 );
 
@@ -51,10 +51,10 @@ INSERT INTO categories VALUES (NULL, 'HTML');
 INSERT INTO categories VALUES (NULL, 'Javascript');
 INSERT INTO lists VALUES (NULL, 'Projeto LTW', 2);
 INSERT INTO lists VALUES (NULL, 'Projeto LAIG', 1);
-INSERT INTO todos VALUES (NULL, 'Fazer Landing Page', '2017-11-27', 1);
-INSERT INTO todos VALUES (NULL, 'Mostrar os Todos', '2017-11-27', 1);
-INSERT INTO todos VALUES (NULL, 'Fazer tudo bonito', '2017-11-27', 1);
-INSERT INTO todos VALUES (NULL, 'Fazer Animações', '2018-01-01', 2);
+INSERT INTO todos VALUES (NULL, 'Fazer Landing Page', '2017-11-27', -1, 1);
+INSERT INTO todos VALUES (NULL, 'Mostrar os Todos', '2017-11-27', -1, 1);
+INSERT INTO todos VALUES (NULL, 'Fazer tudo bonito', '2017-11-27', -1, 1);
+INSERT INTO todos VALUES (NULL, 'Fazer Animações', '2018-01-01', -1, 2);
 INSERT INTO hasItems VALUES (1,1);
 INSERT INTO hasItems VALUES (1,2);
 INSERT INTO hasItems VALUES (1,3);
