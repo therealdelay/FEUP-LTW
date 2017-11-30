@@ -48,6 +48,8 @@ function addEditButtonsListeners(){
 	for(let i = 0; i < todoEditButtons.length; i++){
 		todoEditButtons[i].addEventListener("click",function(){
 			selectedTodoId = this.parentNode.parentNode.id;
+			todoEditNameText.value = this.parentNode.parentNode.childNodes[1].innerHTML;
+			todoEditDateText.value = this.parentNode.parentNode.childNodes[3].innerHTML;
 			getEditForm();
 		});
 	}
@@ -126,8 +128,6 @@ saveTodoEditButton.addEventListener("click",function(event){
 });
 
 cancelTodoEditButton.addEventListener("click",function(event){
-	todoEditNameText.value = "";
-	todoEditDateText.value = "";
 	editForm.style.display = "none";
 	todos.style.opacity = "1";
 });
