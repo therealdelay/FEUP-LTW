@@ -35,6 +35,34 @@
 	<input type="submit" value="Cancel">
 </div>
 
+<div id="search">
+	<label>Search
+		<input type="search" placeholder="Title" name="search_title"> 
+	</label>
+	<!--
+	<a id="toggle_advanced_search" href="#">
+		Advanced Search
+	</a>
+	-->
+	<input type="checkbox" id="hamburger">
+	<label class="hamburger" for="hamburger"></label>
+	
+	<div id="advanced_search">
+		<label>Priority
+			<select name="priority">
+				<option value="">All</option>
+				<option value="p1">High</option>
+				<option value="p2">Medium</option>
+				<option value="p3">Low</option>
+			</select>
+		</label>
+		<label>Categories
+			<input type="text" placeholder="Category" name="category">
+		</label>
+	</div>
+</div>
+
+
 <section id="lists">
 	
 
@@ -76,7 +104,7 @@
 		</div>
 	</a>
 		<?php } ?>
-		<div class="list" id="ultimo">
+		<div id="ultimo">
 			<img src="images/addIcon.png">
 		</div>
 </section>
