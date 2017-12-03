@@ -1,0 +1,41 @@
+body {
+	background-color: #585858;
+	margin: 0;
+}
+
+header {
+	color: white;
+	padding: 1em;
+}
+
+h1 {
+	display: inline;
+	/*color: white;*/
+	color: black;
+	padding: 1em;
+}
+
+a {
+	text-decoration: none;
+	/*color: white;*/
+	color: black;
+}
+
+#user {
+	float: right;
+}
+
+#submit_button {
+	display: inline;
+}
+
+img {
+	display: block;
+	margin: auto;
+	margin-bottom: 50px;
+	width: 300px;
+}
+
+div {
+	text-align: center;
+}
