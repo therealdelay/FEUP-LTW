@@ -1,7 +1,6 @@
 let addButton = document.querySelector("img");
 let form = document.getElementById("add_form");
 let lists = document.getElementById("lists");
-let select = document.querySelector("select");
 
 let selectedListId = null;
 
@@ -18,20 +17,20 @@ function getForm(event){
 	form.style.display = "inline";
 	lists.style.opacity = "0.5";
 
-	let request = new XMLHttpRequest();
+	/*let request = new XMLHttpRequest();
 	request.addEventListener("load", getCategories);
 	request.open("get", "get_categories.php", true);
-	request.send();
+	request.send();*/
 }
 
 function getEditForm(){
 	editForm.style.display = "inline";
 	lists.style.opacity = "0.5";
 	
-	let request = new XMLHttpRequest();
+	/*let request = new XMLHttpRequest();
 	request.addEventListener("load", getCategories);
 	request.open("get", "get_categories.php", true);
-	request.send();
+	request.send();*/
 }
 
 let listTitleText = document.querySelector("#add_form input[name='title']");
@@ -109,22 +108,22 @@ function saveListHandler(event){
 	let request = new XMLHttpRequest();
 	request.addEventListener("load", listsReceived);
 
-	if(addNewCategoryActivated === 0){
+	/*if(addNewCategoryActivated === 0){
 		console.log("add_list.php?title="+listTitleText.value+"&priority="+listPriorityText.value+"&"+getSelectedOptions().join('&'));
 		request.open("get", "add_list.php?title="+listTitleText.value+"&priority="+listPriorityText.value+"&"+getSelectedOptions().join('&'), true);
 		request.send();
 	}
-	else {
-		let oldCategories = getSelectedOptions();
+	else {*/
+		let newCategories = new Array();
 		let inputCategories = document.querySelectorAll("input[name='category']");
 		for(let i = 0; i < inputCategories.length; i++){
 			if(inputCategories[i].value !== ""){
-				oldCategories.push("category[]="+inputCategories[i].value);
+				newCategories.push("category[]="+inputCategories[i].value);
 			}
 		}
-		request.open("get", "add_list.php?title="+listTitleText.value+"&priority="+listPriorityText.value+"&"+oldCategories.join('&'), true);
+		request.open("get", "add_list.php?title="+listTitleText.value+"&priority="+listPriorityText.value+"&"+newCategories.join('&'), true);
 		request.send();
-	}
+	//}
 }
 
 /**
@@ -169,6 +168,7 @@ function listRemoved() {
 /**
 	Gets all the categories from the database
 */
+/*
 function getCategories() {
 	let categories = JSON.parse(this.responseText);
 	select.innerHTML = ""; 
@@ -179,10 +179,11 @@ function getCategories() {
 		item.innerHTML = categories[cat]['cat_name'];
 		select.appendChild(item);
 	}
-}
+}*/
 /**
 	Returns the selected options in the categories dropdown
 */
+/*
 function getSelectedOptions() {
     var result = [];
 	var options = document.querySelectorAll("option");
@@ -192,4 +193,4 @@ function getSelectedOptions() {
 	    }
   	}
   	return result;
-}
+}*/
