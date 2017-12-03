@@ -19,13 +19,8 @@
 	<label>Priority
 		<input type="number" placeholder="priority" min="0" max="3" name="priority">
 	</label>
-	<label>Categories
-		<select id="categories" size="4" multiple></select>
-	</label>
 	<button id="add_category">Add New Category</button>
-	<div id="new_categories">
-		
-	</div>
+	<div id="new_categories"></div>
 	<input type="submit" value="Add">
 	<input type="submit" value="Cancel">
 </div>

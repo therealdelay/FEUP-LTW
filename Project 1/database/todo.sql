@@ -83,6 +83,14 @@ BEGIN
 	UPDATE lists SET done = -1 WHERE id = new.list_id;
 END;
 
+CREATE TRIGGER check_repeated_categories
+BEFORE INSERT ON hasCategories
+FOR EACH ROW
+WHEN ((SELECT COUNT(*) FROM hasCategories WHERE new.list_id = hasCategories.list_id AND new.cat_id = hasCategories.cat_id) > 0)
+BEGIN
+	SELECT RAISE(IGNORE);
+END;
+
 
 
 INSERT INTO users VALUES (NULL, 'john', 'john', 'john@gmail.com', 'https://farm5.staticflickr.com/4026/4654109388_465c99f66f.jpg', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'); --1234

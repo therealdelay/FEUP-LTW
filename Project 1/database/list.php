@@ -82,10 +82,45 @@
 		$stmt = $dbh->prepare("UPDATE lists SET title = ?, priority = ? WHERE id = ?");
 		$stmt->execute(array($title, $priority, $list_id));
 
-		$stmt = $dbh->prepare("SELECT cat_name FROM categories");
-		$stmt->execute();
-		$ex_cat = $stmt->fetchAll()['cat_name'];
-		//acabar
+		$cat_ids = array();
+		foreach($categories as $cat){
+			$stmt = $dbh->prepare("SELECT cat_id FROM categories WHERE cat_name = ?");
+			$stmt->execute(array($cat));
+			$cat_id = $stmt->fetch()['cat_id'];
+
+			if($cat_id == null){
+				$stmt = $dbh->prepare("INSERT INTO categories (cat_name) VALUES (?)");
+				$stmt->execute(array($cat));
+
+				// IMPROVE THIS
+				$stmt = $dbh->prepare("SELECT cat_id FROM categories ORDER BY cat_id DESC LIMIT 1");
+				$stmt->execute();
+				$cat_id = $stmt->fetch()['cat_id'];
+			}
+			$cat_ids[] = $cat_id;
+		}
+
+		$stmt = $dbh->prepare("SELECT cat_id FROM hasCategories WHERE list_id = ?");
+		$stmt->execute(array($list_id));
+		$old_cats = $stmt->fetchAll();
+
+		foreach($cat_ids as $cat_id){
+			$key = array_search(array($cat_id), $old_cats);
+			if($key === false){
+				$stmt = $dbh->prepare("INSERT INTO hasCategories (list_id, cat_id) VALUES (?, ?)");
+				$stmt->execute(array($list_id, $cat_id));
+			} else {
+				unset($old_cats[$key]);
+			}
+		}
+
+		foreach($old_cats as $cat_id){
+			$key = array_search($cat_id['cat_id'], $cat_ids);
+			if($key === false){
+				$stmt = $dbh->prepare("DELETE FROM hasCategories WHERE list_id = ? AND cat_id = ?");
+				$stmt->execute(array($list_id, $cat_id['cat_id']));
+			}
+		}
 
 	}
 
@@ -102,10 +137,11 @@
 		$stmt->execute(array($list_id, $todo_id));
 	}
 
-	function getAllCategories() {
+	function getCategories($list_id) {
 		global $dbh;
-		$stmt = $dbh->prepare("SELECT cat_name FROM categories");
-		$stmt->execute();
+		$stmt = $dbh->prepare("SELECT cat_name FROM categories, hasCategories WHERE hasCategories.list_id = ? 
+								AND categories.cat_id = hasCategories.cat_id");
+		$stmt->execute(array($list_id));
 		return $stmt->fetchAll();
 	}
 

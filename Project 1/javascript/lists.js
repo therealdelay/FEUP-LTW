@@ -16,28 +16,17 @@ addButton.addEventListener("click", getForm);
 function getForm(event){
 	form.style.display = "inline";
 	lists.style.opacity = "0.5";
-
-	/*let request = new XMLHttpRequest();
-	request.addEventListener("load", getCategories);
-	request.open("get", "get_categories.php", true);
-	request.send();*/
 }
 
-function getEditForm(){
-	editForm.style.display = "inline";
-	lists.style.opacity = "0.5";
-	
-	/*let request = new XMLHttpRequest();
-	request.addEventListener("load", getCategories);
-	request.open("get", "get_categories.php", true);
-	request.send();*/
-}
 
 let listTitleText = document.querySelector("#add_form input[name='title']");
 let listPriorityText = document.querySelector("#add_form input[name='priority']");
 let addCategoryButton = document.getElementById("add_category");
 let addListButton = document.querySelector("input[value='Add']");
 let cancelListButton = document.querySelector("input[value='Cancel']");
+
+let listEditTitleText = document.querySelector("#edit_form input[name='title']");
+let listEditPriorityText = document.querySelector("#edit_form input[name='priority']");
 
 
 // Edit Form Selector
@@ -57,7 +46,6 @@ let cancelListEditButton = document.querySelector("#edit_form input[value='Cance
 let listEditButtons = document.querySelectorAll(".list button[name='Edit']");
 let listRemoveButtons = document.querySelectorAll(".list button[name='Remove']");
 
-let addNewCategoryActivated = 0;
 let maxNewCategory = 3;
 let countNewCategory = 0;
 
@@ -70,8 +58,8 @@ function addRemoveButtonsListeners(){
 			request.open("get", "remove_list.php?list_id="+this.parentNode.id, true);
 			request.send();
 			
-			//this.parentNode.parentNode.remove();
-		});
+		});			//this.parentNode.parentNode.remove();
+
 	}
 }
 
@@ -79,11 +67,18 @@ function addEditButtonsListeners(){
 	for(let i = 0; i < listEditButtons.length; i++){
 		listEditButtons[i].addEventListener("click",function(event){
 			event.preventDefault();
-			//selectedListId = this.parentNode.parentNode.id;
+			let request = new XMLHttpRequest();
+			request.addEventListener("load", getCategories);
+
+			selectedListId = this.parentNode.id;
 			listEditNameText.value = this.parentNode.childNodes[1].innerHTML;
 			let priorityString = this.parentNode.classList[this.parentNode.classList.length-1];
 			listEditPriority.value = priorities[priorityString];
-			getEditForm();
+			editForm.style.display = "inline";
+			lists.style.opacity = "0.5";
+			
+			request.open("get", "get_categories.php?list_id="+this.parentNode.id, true);
+			request.send();
 		});
 	}
 }
@@ -93,8 +88,7 @@ addEditButtonsListeners();
 
 function addCategoryHandler(event){
 	if(countNewCategory < maxNewCategory){
-		addNewCategoryActivated = 1;
-		let divNewCategories = document.getElementById("new_categories");
+		let divNewCategories = document.querySelector("#add_form #new_categories");
 		let newInput = document.createElement("input");
 		newInput.setAttribute("type", "text");
 		newInput.setAttribute("placeholder", "new category");
@@ -104,26 +98,32 @@ function addCategoryHandler(event){
 	}
 }
 
+function addEditCategoryHandler(event){
+	if(countNewCategory < maxNewCategory){
+		let divNewCategories = document.querySelector("#edit_form #new_categories");
+		let newInput = document.createElement("input");
+		newInput.setAttribute("type", "text");
+		newInput.setAttribute("placeholder", "new category");
+		newInput.setAttribute("name", "category");
+		divNewCategories.appendChild(newInput);
+		countNewCategory++;
+	}
+}
+
+
 function saveListHandler(event){
 	let request = new XMLHttpRequest();
 	request.addEventListener("load", listsReceived);
 
-	/*if(addNewCategoryActivated === 0){
-		console.log("add_list.php?title="+listTitleText.value+"&priority="+listPriorityText.value+"&"+getSelectedOptions().join('&'));
-		request.open("get", "add_list.php?title="+listTitleText.value+"&priority="+listPriorityText.value+"&"+getSelectedOptions().join('&'), true);
-		request.send();
-	}
-	else {*/
-		let newCategories = new Array();
-		let inputCategories = document.querySelectorAll("input[name='category']");
-		for(let i = 0; i < inputCategories.length; i++){
-			if(inputCategories[i].value !== ""){
-				newCategories.push("category[]="+inputCategories[i].value);
-			}
+	let newCategories = new Array();
+	let inputCategories = document.querySelectorAll("input[name='category']");
+	for(let i = 0; i < inputCategories.length; i++){
+		if(inputCategories[i].value !== ""){
+			newCategories.push("category[]="+inputCategories[i].value);
 		}
-		request.open("get", "add_list.php?title="+listTitleText.value+"&priority="+listPriorityText.value+"&"+newCategories.join('&'), true);
-		request.send();
-	//}
+	}
+	request.open("get", "add_list.php?title="+listTitleText.value+"&priority="+listPriorityText.value+"&"+newCategories.join('&'), true);
+	request.send();
 }
 
 /**
@@ -131,14 +131,27 @@ function saveListHandler(event){
 */
 addCategoryButton.addEventListener("click", addCategoryHandler);
 
-addEditCategoryButton.addEventListener("click", addCategoryHandler);
+addEditCategoryButton.addEventListener("click", addEditCategoryHandler);
 
 /**
 	Event once the add button on the form is clicked. It add the new list to the database
 */
 addListButton.addEventListener("click", saveListHandler);
 
-saveListEditButton.addEventListener("click",saveListHandler);
+saveListEditButton.addEventListener("click",function(event){
+	let request = new XMLHttpRequest();
+	request.addEventListener("load", listsReceived);
+
+	let newCategories = new Array();
+	let inputCategories = document.querySelectorAll("#edit_form input[name='category']");
+	for(let i = 0; i < inputCategories.length; i++){
+		if(inputCategories[i].value !== ""){
+			newCategories.push("category[]="+inputCategories[i].value);
+		}
+	}
+	request.open("get", "edit_list.php?list_id=" + selectedListId + "&title="+listEditTitleText.value+"&priority="+listEditPriorityText.value+"&"+newCategories.join('&'), true);
+	request.send();
+});
 
 
 cancelListEditButton.addEventListener("click",function(event){
@@ -168,29 +181,20 @@ function listRemoved() {
 /**
 	Gets all the categories from the database
 */
-/*
+
 function getCategories() {
 	let categories = JSON.parse(this.responseText);
-	select.innerHTML = ""; 
-
+	let divNewCategories = document.querySelector("#edit_form #new_categories");
+	divNewCategories.innerHTML = "";
+	
 	for (cat in categories) {
-		let item = document.createElement("option");
-		item.value = cat;
-		item.innerHTML = categories[cat]['cat_name'];
-		select.appendChild(item);
+		let newInput = document.createElement("input");
+		newInput.setAttribute("type", "text");
+		newInput.setAttribute("placeholder", "new category");
+		newInput.setAttribute("name", "category");
+		newInput.value = categories[cat]['cat_name'];
+		divNewCategories.appendChild(newInput);
+		console.log(newInput);
+		console.log(divNewCategories);
 	}
-}*/
-/**
-	Returns the selected options in the categories dropdown
-*/
-/*
-function getSelectedOptions() {
-    var result = [];
-	var options = document.querySelectorAll("option");
-  	for (let a = 0; a < options.length; a++) {
-	    if (options[a].selected === true) {
-       		result.push("category[]=" + options[a].text);
-	    }
-  	}
-  	return result;
-}*/
+}
