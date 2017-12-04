@@ -143,11 +143,11 @@ function todoUpdated(){
 	
 	if(status == "1"){
 		selectedTodo.style.backgroundColor = "green";
-		checkButton.innerHTML = "Uncheck";
+		checkButton.innerHTML = "<i class='fa fa-square-o' aria-hidden='true'></i>";
 	}
 	else{
 		selectedTodo.style.backgroundColor = "white";
-		checkButton.innerHTML = "Check";
+		checkButton.innerHTML = "<i class='fa fa-check-square-o' aria-hidden='true'></i>";
 	}
 	//location.reload();
 }

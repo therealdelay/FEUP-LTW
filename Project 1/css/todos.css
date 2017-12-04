@@ -1,27 +1,46 @@
 body {
-	background-image: url("../images/intro.png");
-	background-size: cover;
+	/*background-image: url("../images/intro.png");
+	background-size: cover;*/
+	background-color: #d9dde0;
+	font-family: 'Nunito', sans-serif;
 	margin: 0;
 }
 
 header {
-	color: white;
+	color: black;
 	padding: 1em;
+	background-color: white;
+	box-shadow: 0 0 10px 1px black;
 }
 
 h1 {
 	display: inline;
-	color: white;
+	color: black;
 	padding: 1em;
 }
 
 a {
 	text-decoration: none;
-	color: white;
+	color: black;
+}
+
+button, input[type="Submit"]{
+	padding: 0.3em 1em;
+	background-color: white;
+	border: 1px solid #d9dde0;
 }
 
 #user {
 	float: right;
+}
+
+#user a {
+	margin: 0 1em;
+}
+
+#advanced_search {
+	display: inline;
+	margin-left: 0.5em;
 }
 
 #submit_button {
@@ -35,17 +54,18 @@ a {
 
 #lists {
 	margin: 2em;
-	display: flex;
+	/*display: flex;
 	flex-wrap: wrap;
-	justify-content: flex-start;
-	align-items: center;
+	justify-content: space-around;
+	align-items: flex-start;*/
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+  	grid-template-rows: auto;
 }
 
 #lists > * {
 	display: inline-block;
-	/*flex-grow: 1; */
     margin: 1em 1em;
-    width: 20%;
 }
 
 .list {
@@ -53,6 +73,12 @@ a {
 	padding: 1em;
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px 5px #888888;
+
+	transition: transform 0.5s;
+}
+
+.list:hover {
+	transform: scale(1.05);
 }
 
 #ultimo {
@@ -60,10 +86,14 @@ a {
 	width: 5em;
 	height: 5em;
 	*/
-	background-color: white;
+	/*background-color: white;
 	padding: 1em;
 	border-radius: 10px;
-	box-shadow: 0px 0px 10px 5px #888888;
+	box-shadow: 0px 0px 10px 5px #888888;*/
+}
+
+#ultimo img {
+	max-width: 10em;
 }
 
 .list h2 {
@@ -79,17 +109,18 @@ a {
 
 .todos {
 	display: block;
-	margin: 0 1em;
+	margin: 0 0.5em;
 	border-radius: 10px;
-	box-shadow: 0px 0px 10px 5px #888888;
+	/*box-shadow: 0px 0px 10px 5px #888888;*/
 }
 
 .todo {
 	background-color: white;
 	position: relative;
 	padding: 0.5em;
+	font-size: 14px;
 }
-
+/*
 .todo:first-child {
 	border-top-right-radius: 10px;
 	border-top-left-radius: 10px;
@@ -99,7 +130,7 @@ a {
 	border-bottom-right-radius: 10px;
 	border-bottom-left-radius: 10px;
 }
-
+*/
 .todo p {
 	display: inline;
 }
@@ -118,44 +149,24 @@ span {
 }
 
 .p1 {
-	background-color: red;
+	background-color: #e02c18;
 }
 
 .p2 {
-	background-color: orange;
+	background-color: #ff8121;
 }
 
 .p3 {
-	background-color: yellow;
+	background-color: #ffcb20;
 }
 
-#todos_only {
-	padding-top: 10em;
-	display: flex;
-	justify-content: center;
-}
-
-.todo_only {
-	background-color: white;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin: 0 auto;
-	border: 1px solid #888888;
-	border-radius: 10px;
-	box-shadow: 0px 0px 10px 5px #888888;
-}
-
-.todo_only img {
-	width: 100px;
-	height: 100px;
-}
 
 #add_form {
-	border-style: solid;
-	background-color: bisque;
-	padding: 2em;
+	/*border-style: solid;*/
+	box-shadow: 0px 0px 10px 5px #888888;
+	background-color: white;
+	padding: 1em;
 	width: 50%;
-	height:25%;
 	left: 25%;
 	top: 50%;
 	position: absolute;
@@ -164,15 +175,22 @@ span {
 }
 
 #add_form > * {
+	text-align: center;
+	margin: 0.5em auto;
+	display: block;
+}
+
+#add_form input {
 	margin: auto;
+	display: block;
 }
 
 #edit_form {
-	border-style: solid;
-	background-color: bisque;
-	padding: 2em;
+	/*border-style: solid;*/
+	box-shadow: 0px 0px 10px 5px #888888;
+	background-color: white;
+	padding: 1em;
 	width: 50%;
-	height:25%;
 	left: 25%;
 	top: 50%;
 	position: absolute;
@@ -180,8 +198,20 @@ span {
 	display:none;
 }
 
+#edit_form > * {
+	text-align: center;
+	margin: 0.5em auto;
+	display: block;
+}
+
+#edit_form input {
+	margin: auto;
+	display: block;
+}
+
 #search {
-	color: white;
+	color: black;
+	margin: 1em;
 }
 
 #search #hamburger {
@@ -203,6 +233,4 @@ span {
 #search #hamburger:checked ~ #advanced_search{
 	visibility: visible;
 }
-.check {
-	background-color: green; 
-}
+

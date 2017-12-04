@@ -31,19 +31,19 @@
 		$check = 'not_check';
 	?>
 
-	<div id=<?= $todo['todo_id']?> class="todo_only <?= $check ?>">
-		<p><?= $todo['name']?></p>
+	<div id=<?= $todo['todo_id']?> class="todo_only">
+		<h3><?= $todo['name']?></h3>
 		<span><?= $todo['limit_date']?></span>
-		<a href="#"><button name="Edit">Edit</button></a>
+		<a href="#"><button name="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
 		<?php if($todo['done'] == -1){?>
-			<a href="#"><button name="Check">Check</button></a>
+			<a href="#"><button name="Check"><i class="fa fa-check-square-o" aria-hidden="true"></i></button></a>
 		<?php } else {?>
-			<a href="#"><button name="Check">Uncheck</button></a>
+			<a href="#"><button name="Check"><i class="fa fa-square-o" aria-hidden="true"></i></button></a>
 		<?php } ?>
-		<a href="#"><button name="Remove">Remove</button></a>
+		<a href="#"><button name="Remove"><i class="fa fa-1x fa-trash" aria-hidden="true"></i></button></a>
 	</div>
 	<?php } ?>
-	<div class="todo_only">
-		<img src="images/addIcon.png">
+	<div id="ultimo">
+		<a href="#"><img src="images/addIcon.png"></a>
 	</div>
 </section>

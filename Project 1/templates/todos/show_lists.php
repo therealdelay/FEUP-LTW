@@ -89,12 +89,12 @@
 				<?php } ?>
 			</div>
 			
-			<button name="Edit">Edit</button>
-			<button name="Remove">Remove</button>
+			<button name="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+			<button name="Remove"><i class="fa fa-1x fa-trash" aria-hidden="true"></i></button>
 		</div>
 	</a>
 		<?php } ?>
 		<div id="ultimo">
-			<img src="images/addIcon.png">
+			<a href="#"><img src="images/addIcon.png"></a>
 		</div>
 </section>

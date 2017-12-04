@@ -1,0 +1,136 @@
+body {
+	/*background-image: url("../images/intro.png");
+	background-size: cover;*/
+	background-color: #d9dde0;
+	font-family: 'Nunito', sans-serif;
+	margin: 0;
+}
+
+header {
+	color: black;
+	padding: 1em;
+	background-color: white;
+	box-shadow: 0 0 10px 1px black;
+}
+
+h1 {
+	display: inline;
+	color: black;
+	padding: 1em;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button, input[type="Submit"]{
+	padding: 0.3em 1em;
+	background-color: white;
+	border: 1px solid #d9dde0;
+}
+
+#user {
+	float: right;
+}
+
+#user a {
+	margin: 0 1em;
+}
+
+
+#todos_only {
+	/*padding-top: 10em;
+	display: flex;
+	justify-content: center;*/
+	margin: 2em;
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+  	grid-template-rows: auto;
+}
+
+#todos_only > * {
+	display: inline-block;
+    margin: 1em 1em;
+}
+
+.todo_only {
+	background-color: white;
+	padding: 0 1em;
+	margin: 0 auto;
+	border: 1px solid #888888;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px 5px #888888;
+	transition: transform 0.5s;
+}
+
+.todo_only h3 {
+	
+}
+
+.todo_only span {
+	float: right;
+}
+
+.todo_only button {
+	
+}
+
+
+#ultimo img{
+	max-width: 10em;
+}
+
+.todo_only:hover {
+	transform: scale(1.05);
+}
+
+
+
+#add_form {
+	/*border-style: solid;*/
+	box-shadow: 0px 0px 10px 5px #888888;
+	background-color: white;
+	padding: 1em;
+	width: 50%;
+	left: 25%;
+	top: 50%;
+	position: absolute;
+	z-index: 1;
+	display:none;
+}
+
+#add_form > * {
+	text-align: center;
+	margin: 0.5em auto;
+	display: block;
+}
+
+#add_form input {
+	margin: auto;
+	display: block;
+}
+
+#edit_form {
+	/*border-style: solid;*/
+	box-shadow: 0px 0px 10px 5px #888888;
+	background-color: white;
+	padding: 1em;
+	width: 50%;
+	left: 25%;
+	top: 50%;
+	position: absolute;
+	z-index: 1;
+	display:none;
+}
+
+#edit_form > * {
+	text-align: center;
+	margin: 0.5em auto;
+	display: block;
+}
+
+#edit_form input {
+	margin: auto;
+	display: block;
+}

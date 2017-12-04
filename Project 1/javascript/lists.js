@@ -1,4 +1,4 @@
-let addButton = document.querySelector("img");
+let addButton = document.querySelector("#ultimo a");
 let form = document.getElementById("add_form");
 let lists = document.getElementById("lists");
 
@@ -14,6 +14,7 @@ addButton.addEventListener("click", getForm);
 	Gets the form to add a list and gets all the categories from the database
 */
 function getForm(event){
+	event.preventDefault();
 	form.style.display = "inline";
 	lists.style.opacity = "0.5";
 }
