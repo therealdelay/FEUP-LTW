@@ -1,7 +1,7 @@
 	<div>
-		<h3>Name: <?php echo $name ?></h3>
-		<h3>Username: <?php echo $username ?></h3>
-		<h3>Email: <?php echo $email ?></h3>
+		<h3 id="name"><?php echo $name ?></h3><br>
+		<h3 id="username"><?php echo $username ?></h3><br>
+		<h3 id="email"><?php echo $email ?></h3><br>
 		<img src="<?php echo $image; ?>" alt="profilepic">
-		<a href="edit_profile.php">Edit profile</a>
+		<button id="edit_profile" onclick="location.href='edit_profile.php';">Edit profile</button>
 	</div>

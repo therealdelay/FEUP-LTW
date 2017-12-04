@@ -1,24 +1,14 @@
 body {
-	background-image: url("../images/intro.png");
-  	background-size: cover;
-  	background-position: center;
+	background-color: #d9dde0;
 	font-family: 'Nunito', sans-serif;
 	margin: 0;
-}
-
-#register {
-	background-color: white;
-	width: 20em;
-	margin: 3em auto;
-	padding: 1em 0;
-	box-shadow: 0px 0px 10px 5px #888888;
 }
 
 #edit {
 	background-color: white;
 	width: 20em;
-	margin: 1.5em auto;
-	padding: 0.1px 0;
+	margin: 3em auto;
+	padding: 1em 0;
 	box-shadow: 0px 0px 10px 5px #888888;
 	background-color: white;
 }
@@ -39,4 +29,7 @@ form input {
 
 input[type="submit"]{
 	margin: 2em auto;
+	padding: 0.3em 1em;
+	background-color: #d9dde0;
+	box-shadow: 0px 0px 5px 2.5px #888888;
 }
