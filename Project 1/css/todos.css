@@ -28,6 +28,7 @@ button, input[type="Submit"]{
 	padding: 0.3em 1em;
 	background-color: white;
 	border: 1px solid #d9dde0;
+	color: black;
 }
 
 #user {
@@ -119,6 +120,10 @@ button, input[type="Submit"]{
 	position: relative;
 	padding: 0.5em;
 	font-size: 14px;
+}
+
+.todo span {
+	font-size: 12px;
 }
 /*
 .todo:first-child {

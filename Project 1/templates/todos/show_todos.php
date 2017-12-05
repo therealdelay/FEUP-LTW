@@ -31,11 +31,11 @@
 		$check = 'not_check';
 	?>
 
-	<div id=<?= $todo['todo_id']?> class="todo_only">
+	<div id=<?= $todo['todo_id']?> class="todo_only <?= $check ?>">
 		<h3><?= $todo['name']?></h3>
 		<span><?= $todo['limit_date']?></span>
 		<a href="#"><button name="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
-		<?php if($todo['done'] == -1){?>
+		<?php if($todo['done'] == 1){?>
 			<a href="#"><button name="Check"><i class="fa fa-check-square-o" aria-hidden="true"></i></button></a>
 		<?php } else {?>
 			<a href="#"><button name="Check"><i class="fa fa-square-o" aria-hidden="true"></i></button></a>

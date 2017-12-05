@@ -28,6 +28,7 @@ button, input[type="Submit"]{
 	padding: 0.3em 1em;
 	background-color: white;
 	border: 1px solid #d9dde0;
+	color: black;
 }
 
 #user {
@@ -85,6 +86,9 @@ button, input[type="Submit"]{
 	transform: scale(1.05);
 }
 
+.check {
+	background-color: green;
+}
 
 
 #add_form {
