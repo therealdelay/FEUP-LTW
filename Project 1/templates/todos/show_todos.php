@@ -24,7 +24,7 @@
 	<?php foreach ($todos as $todo) { ?>
 
 	<?php
-	$check; 
+	$check;
 	if($todo['done'] == 1)
 		$check = 'check';
 	else 

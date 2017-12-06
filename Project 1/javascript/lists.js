@@ -20,6 +20,61 @@ function getForm(event){
 }
 
 
+/**
+	NOTIFICATIONS
+*/
+
+let notifications = new Array();
+
+function checkNotifications() {
+	let request = new XMLHttpRequest();
+	request.addEventListener("load", updateNotifications);
+	request.open("get", "get_requests.php", true);
+	request.send();
+}
+
+function updateNotifications() {
+	notifications = (JSON.parse(this.responseText)).slice();
+	if(notifications.length > 0){
+		let notificationDiv = document.querySelector("#notifications");
+		console.log(notifications);
+		let notificationBox = document.querySelector("#notifications_box ul");
+		for(let i = 0; i < notifications.length; i++){
+			let li = document.createElement('li');
+			li.innerHTML = "You were invited to the list <strong>"+ notifications[i].title+"</strong> by user <em>"+notifications[i].usr_username+"</em>";
+			console.log(notificationBox);
+			notificationBox.appendChild(li);
+		}
+		
+		notificationDiv.style.display = "block";
+	}
+}
+
+checkNotifications();
+
+/*
+let notificationIcon = document.querySelector("#notifications i");
+
+notificationIcon.addEventListener("click", function(event){
+	lists.style.opacity = "1";
+	let notificationBox = document.getElementById("notifications_box");
+	if(notificationBox.style.display === "none"){
+		for(let i = 0; i < notifications.lenght; i++){
+			let li = "<li>You were invited to the list <strong>"+ notifications[i].title+"</strong> by user <em>"+notifications[i].usr_username+"</em></li>";
+			notificationBox.nextChild.appendChild(li);
+		}
+		notificationBox.style.display = "block";
+	} else {
+		notificationBox.style.display = "none";
+	}
+});*/
+
+
+/**
+	ADD AND REMOVE
+*/
+
+
 let listTitleText = document.querySelector("#add_form input[name='title']");
 let listPriorityText = document.querySelector("#add_form select");
 let addCategoryButton = document.getElementById("add_category");
@@ -195,4 +250,46 @@ function getCategories() {
 		console.log(newInput);
 		console.log(divNewCategories);
 	}
+}
+
+
+/**
+	Invite new users to the list
+*/
+let inviteUserButtons = document.querySelectorAll(".list button[name='Invite']");
+let inviteUserForm = document.getElementById("invite_user_form");
+let addNewUserButton = document.querySelector("#invite_user_form input[value='Add']");
+let cancelNewUserButton = document.querySelector("#invite_user_form input[value='Cancel']");
+
+function addInviteUserButtonsListener(){
+	for(let i = 0; i < inviteUserButtons.length; i++){
+		inviteUserButtons[i].addEventListener("click", function(event){
+			selectedListId = this.parentNode.id;
+			event.preventDefault();
+			inviteUserForm.style.display = "inline";
+			lists.style.opacity = "0.5";
+		});
+	}
+}
+
+addInviteUserButtonsListener();
+
+addNewUserButton.addEventListener("click", function(event){
+	let request = new XMLHttpRequest();
+	request.addEventListener("load", userReceived);
+
+	let inputUsername = document.querySelector("#invite_user_form input[name='username']");
+	
+	request.open("get", "invite_user_list.php?list_id="+selectedListId+"&username="+inputUsername.value, true);
+	request.send();
+});
+
+cancelNewUserButton.addEventListener("click", function(event){
+	inviteUserForm.style.display = "none";
+	lists.style.opacity = "1";
+});
+
+function userReceived() {
+	lists.style.opacity = "1";
+	location.reload();
 }

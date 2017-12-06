@@ -90,6 +90,10 @@ button, input[type="Submit"]{
 	background-color: green;
 }
 
+.not_check {
+	background-color: white;
+}
+
 
 #add_form {
 	/*border-style: solid;*/

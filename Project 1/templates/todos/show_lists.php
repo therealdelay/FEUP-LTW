@@ -33,6 +33,14 @@
 	<input type="submit" value="Cancel">
 </div>
 
+<div id="invite_user_form">
+	<label>Username
+		<input type="text" placeholder="username" name="username" required>
+	</label>
+	<input type="submit" value="Add">
+	<input type="submit" value="Cancel">
+</div>
+
 <div id="search">
 	<label>Search
 		<input type="search" placeholder="Title" name="search_title"> 
@@ -57,6 +65,21 @@
 		<label>Categories
 			<input type="text" placeholder="Category" name="category">
 		</label>
+	</div>
+</div>
+
+<!--
+<div id="notifications">
+	<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+</div>-->
+<div id="notifications">
+	<input type="checkbox" id="hamburger2">
+	<label class="hamburger" for="hamburger2"></label>
+
+	<div id="notifications_box">
+		<ul>
+			
+		</ul>
 	</div>
 </div>
 
@@ -98,6 +121,7 @@
 				<?php } ?>
 			</div>
 			
+			<button name="Invite"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
 			<button name="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 			<button name="Remove"><i class="fa fa-1x fa-trash" aria-hidden="true"></i></button>
 		</div>

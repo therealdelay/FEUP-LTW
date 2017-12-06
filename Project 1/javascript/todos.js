@@ -146,7 +146,7 @@ function todoUpdated(){
 		selectedTodo.style.backgroundColor = "green";
 		checkButton.innerHTML = "<i class='fa fa-check-square-o' aria-hidden='true'></i>";
 	}
-	else{
+	else {
 		selectedTodo.style.backgroundColor = "white";
 		checkButton.innerHTML = "<i class='fa fa-square-o' aria-hidden='true'></i>";
 	}
