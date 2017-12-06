@@ -84,7 +84,8 @@
 				<?php foreach ($todos[$list['id']] as $todo) { ?>
 				<div class="todo">
 					<p><?= $todo['name']?></p>
-					<span><?= $todo['limit_date']?></span>
+					<?php $timeLeft = getTimeDiff($todo['limit_date']); ?>
+					<span><?= $timeLeft ?></span>
 				</div>
 				<?php } ?>
 			</div>
