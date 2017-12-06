@@ -2,7 +2,12 @@
 include_once('includes/init.php');
 include_once('database/user.php');
   
-	//setCurrentUser($_POST['username']);
+	if ( !preg_match ("[A-Z][a-z]*([\s][A-Z][a-z]*)*", $_GET['name'])) {
+		
+	}
+
+
+
 	editUser($_SESSION['username'],$_POST['new_username'], $_POST['name'],$_POST['email'], $_POST['image'], $_POST['new_password']); 
 
 	if (isLoginCorrect($_POST['new_username'], $_POST['new_password'])) { 
