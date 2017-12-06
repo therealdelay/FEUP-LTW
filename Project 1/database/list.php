@@ -19,7 +19,7 @@
 
 	function getListTodos($list_id){
 		global $dbh;
-		$stmt = $dbh->prepare("SELECT * FROM todos, hasItems, lists
+		$stmt = $dbh->prepare("SELECT todos.todo_id, todos.name, todos.limit_date, todos.done FROM todos, hasItems, lists
 								WHERE lists.id = hasItems.list_id AND hasItems.todo_id = todos.todo_id AND lists.id = ?");
 		$stmt->execute(array($list_id));
 		return $stmt->fetchAll();
