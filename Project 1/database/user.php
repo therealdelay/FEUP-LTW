@@ -27,8 +27,18 @@
 
   function editUser($old_username, $new_username, $name, $email, $image, $password){
     global $dbh;
-    $usrnm = strtolower($new_username); 
-    $stmt = $dbh->prepare('UPDATE users SET usr_username = ?, usr_name = ?, usr_email = ?, usr_image = ?, usr_password =? WHERE usr_username = ?');
-    $stmt->execute(array($usrnm, $name, $email, $image, sha1($password), $old_username));
+    $usrnm = strtolower($new_username);
+    if($usrnm != $old_username && notExistUser($usrnm)){
+      $stmt = $dbh->prepare('UPDATE users SET usr_username = ?, usr_name = ?, usr_email = ?, usr_image = ?, usr_password =? WHERE usr_username = ?');
+      $stmt->execute(array($usrnm, $name, $email, $image, sha1($password), $old_username));
+    }
+    else if($usrnm == $old_username){
+      $stmt = $dbh->prepare('UPDATE users SET usr_username = ?, usr_name = ?, usr_email = ?, usr_image = ?, usr_password =? WHERE usr_username = ?');
+      $stmt->execute(array($usrnm, $name, $email, $image, sha1($password), $old_username));
+    }
+    else{
+      return false;
+    }
+    return true;
   }
 ?>

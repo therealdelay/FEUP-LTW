@@ -83,3 +83,21 @@ div {
 #edit_profile:hover {
 	transform: scale(1.1);	
 }
+
+#messages article {
+  	text-align: center;
+  	color: white;
+}
+
+#messages article p {
+  	margin: 0px;
+  	padding: 0.5em;
+}
+
+#messages article.error {
+	background-color: #F66;
+}
+
+#messages article.success {
+  	background-color: #6D6;
+}

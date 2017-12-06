@@ -16,7 +16,7 @@
 				<input type="text" placeholder="username" name="new_username" value=<?= $new_username ?> pattern=".{3,}" title="Must have at least 3 characters" required> 
 			</label>
 			<label>New name
-				<input type="text" placeholder="name" name="name" value=<?= $name?> pattern="[A-Z][a-z]*([\s][A-Z][a-z]*)*" title="Can have more than 1 name, all starting with 1 uppercase letter" required>
+				<input type="text" placeholder="name" name="name" value="<?= $name?>" pattern="[A-Z][a-z]*([\s][A-Z][a-z]*)*" title="Can have more than 1 name, all starting with 1 uppercase letter" required>
 			</label>
 			<label>New e-mail
 				<input type="text" placeholder="e-mail" name="email" value=<?= $email?> pattern="[^@]*@[^@]*[\.].*" title="example@example.example" required>
@@ -33,5 +33,18 @@
 			<input type="submit" value="Save changes">
 		</form>
 	</div>
+
+	<section id="messages">
+      <?php $errors = getErrorMessages();foreach ($errors as $error) { ?>
+      <article class="error">
+        <p><?=$error?></p>
+      </article>
+      <?php } ?>
+      <?php $successes = getSuccessMessages();foreach ($successes as $success) { ?>
+      <article class="success">
+        <p><?=$success?></p>
+      </article>
+      <?php } clearMessages(); ?>
+    </section>
 </body>
 </html>
