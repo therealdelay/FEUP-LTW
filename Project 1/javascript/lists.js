@@ -76,13 +76,10 @@ notificationIcon.addEventListener("click", function(event){
 
 
 let listTitleText = document.querySelector("#add_form input[name='title']");
-let listPriorityText = document.querySelector("#add_form input[name='priority']");
+let listPriorityText = document.querySelector("#add_form select");
 let addCategoryButton = document.getElementById("add_category");
 let addListButton = document.querySelector("input[value='Add']");
 let cancelListButton = document.querySelector("input[value='Cancel']");
-
-let listEditTitleText = document.querySelector("#edit_form input[name='title']");
-let listEditPriorityText = document.querySelector("#edit_form input[name='priority']");
 
 
 // Edit Form Selector
@@ -90,12 +87,12 @@ let editForm = document.getElementById("edit_form");
 
 // Edit Todo Form Selectors
 let listEditNameText = document.querySelector("#edit_form  input[name='title']");
-let listEditPriority = document.querySelector("#edit_form input[name='priority']");
+let listEditPriority = document.querySelector("#edit_form select");
 let listEditCategories = document.querySelector("#edit_form #categories");
 
 // Edit Form Button Selectors
 let addEditCategoryButton = document.querySelector("#edit_form #add_category");
-let saveListEditButton = document.querySelector("#edit_form input[value='Add']");
+let saveListEditButton = document.querySelector("#edit_form input[value='Save']");
 let cancelListEditButton = document.querySelector("#edit_form input[value='Cancel']");
 
 // List Buttons Selectors
@@ -205,7 +202,7 @@ saveListEditButton.addEventListener("click",function(event){
 			newCategories.push("category[]="+inputCategories[i].value);
 		}
 	}
-	request.open("get", "edit_list.php?list_id=" + selectedListId + "&title="+listEditTitleText.value+"&priority="+listEditPriorityText.value+"&"+newCategories.join('&'), true);
+	request.open("get", "edit_list.php?list_id=" + selectedListId + "&title="+listEditNameText.value+"&priority="+listEditPriority.value+"&"+newCategories.join('&'), true);
 	request.send();
 });
 
