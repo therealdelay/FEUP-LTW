@@ -3,7 +3,11 @@
 		<input type="text" placeholder="write here..." name="title" required> 
 	</label>
 	<label>Priority
-		<input type="number" placeholder="priority" min="0" max="3" name="priority">
+		<select name="priority">
+			<option value="1">High</option>
+			<option value="2">Medium</option>
+			<option value="3">Low</option>
+		</select>
 	</label>
 	<button id="add_category">Add New Category</button>
 	<div id="new_categories"></div>
@@ -17,11 +21,15 @@
 		<input type="text" placeholder="write here..." name="title" required> 
 	</label>
 	<label>Priority
-		<input type="number" placeholder="priority" min="0" max="3" name="priority">
+		<select name="priority">
+			<option value="1">High</option>
+			<option value="2">Medium</option>
+			<option value="3">Low</option>
+		</select>
 	</label>
 	<button id="add_category">Add New Category</button>
 	<div id="new_categories"></div>
-	<input type="submit" value="Add">
+	<input type="submit" value="Save">
 	<input type="submit" value="Cancel">
 </div>
 

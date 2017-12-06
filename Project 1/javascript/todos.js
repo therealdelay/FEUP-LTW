@@ -32,7 +32,7 @@ function addRemoveButtonsListeners(){
 		todoRemoveButtons[i].addEventListener("click",function(){
 			let request = new XMLHttpRequest();
 			request.addEventListener("load", todoRemoved);
-			request.open("get", "remove_todo.php?list_id="+list_id+"&todo_id="+this.parentNode.parentNode.id, true);
+			request.open("get", "remove_todo.php?list_id="+list_id+"&todo_id="+this.parentNode.id, true);
 			request.send();
 			//this.parentNode.parentNode.remove();
 		});
@@ -42,9 +42,9 @@ function addRemoveButtonsListeners(){
 function addEditButtonsListeners(){
 	for(let i = 0; i < todoEditButtons.length; i++){
 		todoEditButtons[i].addEventListener("click",function(){
-			selectedTodoId = this.parentNode.parentNode.id;
-			todoEditNameText.value = this.parentNode.parentNode.childNodes[1].innerHTML;
-			todoEditDateText.value = this.parentNode.parentNode.childNodes[3].innerHTML;
+			selectedTodoId = this.parentNode.id;
+			todoEditNameText.value = this.parentNode.childNodes[1].innerHTML;
+			todoEditDateText.value = this.parentNode.childNodes[3].innerHTML;
 			getEditForm();
 		});
 	}
@@ -53,10 +53,10 @@ function addEditButtonsListeners(){
 function addDoneButtonsListeners(){
 	for(let i = 0; i < todoDoneButtons.length; i++){
 		todoDoneButtons[i].addEventListener("click",function(){
-			selectedTodo = this.parentNode.parentNode;
+			selectedTodo = this.parentNode;
 			let request = new XMLHttpRequest();
 			request.addEventListener("load", todoUpdated);
-			request.open("get", "update_todo.php?todo_id="+this.parentNode.parentNode.id, true);
+			request.open("get", "update_todo.php?todo_id="+this.parentNode.id, true);
 			request.send();
 		});
 	}
@@ -138,8 +138,9 @@ function todoRemoved(){
 }
 
 function todoUpdated(){
+	console.log(this.responseText);
 	let status = this.responseText;
-	checkButton = selectedTodo.childNodes[7].childNodes[0];
+	checkButton = selectedTodo.childNodes[7];
 	
 	if(status == "1"){
 		selectedTodo.style.backgroundColor = "green";
