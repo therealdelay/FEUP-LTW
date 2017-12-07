@@ -5,19 +5,25 @@
 	
 	include_once('templates/todos/time.php');
 
-	$lists = getAllLists($_SESSION['username']);
-
-	$categories = array();
-	foreach ($lists as $list) {
-		$categories[$list['id']] = getListCategories($list['id']);
+	if (!isset($_SESSION['username']) || $_SESSION['username'] == ''){
+     	header('Location: page404.php');
 	}
 
-	$todos = array();
-	foreach ($lists as $list) {
-		$todos[$list['id']] = getListTodos($list['id']);
-	}
+    else{
+		$lists = getAllLists($_SESSION['username']);
 
-	include_once('templates/common/header.php');
-	include_once('templates/todos/show_lists.php');
-	include_once('templates/common/footer.php');
+		$categories = array();
+		foreach ($lists as $list) {
+			$categories[$list['id']] = getListCategories($list['id']);
+		}
+
+		$todos = array();
+		foreach ($lists as $list) {
+			$todos[$list['id']] = getListTodos($list['id']);
+		}
+
+		include_once('templates/common/header.php');
+		include_once('templates/todos/show_lists.php');
+		include_once('templates/common/footer.php');
+	}
 ?>
