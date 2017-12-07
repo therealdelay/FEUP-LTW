@@ -2,6 +2,8 @@
 	include_once('includes/init.php');
 
 	include_once('database/list.php');
+	
+	include_once('templates/todos/time.php');
 
 	$lists = getAllLists($_SESSION['username']);
 

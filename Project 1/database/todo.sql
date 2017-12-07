@@ -16,7 +16,7 @@ CREATE TABLE lists (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	title VARCHAR NOT NULL,
 	done INTEGER DEFAULT(-1),
-	priority INTEGER DEFAULT(0)
+	priority INTEGER DEFAULT(3)
 );
 
 CREATE TABLE todos (
@@ -43,6 +43,13 @@ CREATE TABLE hasCategories (
 	list_id INTEGER REFERENCES lists NOT NULL,
 	cat_id INTEGER REFERENCES categories NOT NULL,
 	PRIMARY KEY(list_id, cat_id)
+);
+
+CREATE TABLE requests (
+	usr_id INTEGER REFERENCES users NOT NULL,
+	list_id INTEGER REFERENCES lists NOT NULL,
+	owner_usr_id INTEGER REFERENCES users NOT NULL,
+	PRIMARY KEY (usr_id, list_id, owner_usr_id)
 );
 
 /**
@@ -91,6 +98,14 @@ BEGIN
 	SELECT RAISE(IGNORE);
 END;
 
+CREATE TRIGGER check_repeated_requests
+BEFORE INSERT ON requests
+FOR EACH ROW 
+WHEN ((SELECT COUNT(*) FROM requests WHERE requests.list_id = new.list_id 
+				AND requests.usr_id = new.usr_id AND requests.owner_usr_id = new.owner_usr_id) > 0)
+BEGIN
+	SELECT RAISE(IGNORE);
+END;
 
 
 INSERT INTO users VALUES (NULL, 'john', 'john', 'john@gmail.com', 'https://farm5.staticflickr.com/4026/4654109388_465c99f66f.jpg', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'); --1234

@@ -214,7 +214,31 @@ span {
 	display: block;
 }
 
+#invite_user_form {
+	box-shadow: 0px 0px 10px 5px #888888;
+	background-color: white;
+	padding: 1em;
+	width: 50%;
+	left: 25%;
+	top: 50%;
+	position: absolute;
+	z-index: 1;
+	display:none;
+}
+
+#invite_user_form > * {
+	text-align: center;
+	margin: 0.5em auto;
+	display: block;
+}
+
+#invite_user_form input {
+	margin: auto;
+	display: block;
+}
+
 #search {
+	display: inline-block;
 	color: black;
 	margin: 1em;
 }
@@ -239,3 +263,51 @@ span {
 	visibility: visible;
 }
 
+#notifications {
+	float: right;
+	margin: 1em;
+	display: none;
+}
+
+#notifications > * {
+	font-size: 25px;
+	color: red;
+}
+
+#notifications #hamburger2 {
+	display: none;
+}
+
+#notifications .hamburger:before {
+	content: "\f06a";
+	font-family: FontAwesome;
+}
+
+#notifications_box {
+	background-color: #d9dde0;
+	color: black;
+	font-size: 14px;
+	font-family: 'Nunito', sans-serif;
+	visibility: collapse;
+	z-index: 1;
+	position: absolute;
+	right: 2%;
+	padding: 0 1em;
+	box-shadow: 0 0 10px 1px black;
+	border-radius: 10px;
+}
+
+#notifications_box ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#notifications_box li {
+	background-color: white;
+	padding: 1em;
+
+}
+
+#notifications #hamburger2:checked ~ #notifications_box{
+	visibility: visible;
+}
