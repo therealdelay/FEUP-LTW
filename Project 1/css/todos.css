@@ -305,7 +305,11 @@ span {
 #notifications_box li {
 	background-color: white;
 	padding: 1em;
+}
 
+.accept, .decline{
+	margin-left: 0.5em;
+	color: blue;
 }
 
 #notifications #hamburger2:checked ~ #notifications_box{

@@ -205,17 +205,48 @@
 		$stmt->execute(array($list_id, $owner_usr_id, $username));
 	}
 
-	function addUserToList($username, $list_id) {
+	function removeRequestWithNames($username, $list_title, $owner_usr_username){
 		global $dbh;
 		$stmt = $dbh->prepare("SELECT usr_id FROM users WHERE usr_username = ?");
 		$stmt->execute(array($username));
 		$usr_id = $stmt->fetch()['usr_id'];
 
+		$stmt = $dbh->prepare("SELECT usr_id FROM users WHERE usr_username = ?");
+		$stmt->execute(array($owner_usr_username));
+		$owner_usr_id = $stmt->fetch()['usr_id'];
+
+		$stmt = $dbh->prepare("SELECT list_id FROM requests WHERE owner_usr_id = ? AND usr_id = ?");
+		$stmt->execute(array($owner_usr_id, $usr_id));
+		$list_id = $stmt->fetch()['list_id'];
+
+		$stmt = $dbh->prepare("DELETE FROM requests WHERE list_id = ? AND owner_usr_id = ? 
+								AND usr_id = ?");
+		$stmt->execute(array($list_id, $owner_usr_id, $usr_id));
+	}
+
+	function addUserToList($username, $list_title, $owner_usr_username) {
+		global $dbh;
+		$stmt = $dbh->prepare("SELECT usr_id FROM users WHERE usr_username = ?");
+		$stmt->execute(array($username));
+		$usr_id = $stmt->fetch()['usr_id'];
+
+		$stmt = $dbh->prepare("SELECT usr_id FROM users WHERE usr_username = ?");
+		$stmt->execute(array($owner_usr_username));
+		$owner_usr_id = $stmt->fetch()['usr_id'];
+
+		$stmt = $dbh->prepare("SELECT list_id FROM requests, lists WHERE owner_usr_id = ? AND usr_id = ?
+								AND lists.id = requests.list_id AND lists.title = ?");
+		$stmt->execute(array($owner_usr_id, $usr_id, $list_title));
+		$list_id = $stmt->fetch()['list_id'];
+
 		$stmt = $dbh->prepare("INSERT INTO belongs (list_id, usr_id) VALUES (?, ?)");
 		$stmt->execute(array($list_id, $usr_id));
 
-	}
+		$stmt = $dbh->prepare("DELETE FROM requests WHERE list_id = ? AND owner_usr_id = ? 
+								AND usr_id = ?");
+		$stmt->execute(array($list_id, $owner_usr_id, $usr_id));
 
+	}
 	function getRequests($username) {
 		global $dbh;
 		$stmt = $dbh->prepare("SELECT title, users.usr_username FROM requests, lists, users WHERE requests.usr_id = (SELECT usr_id FROM users WHERE usr_username = ?) AND requests.list_id = lists.id AND users.usr_id = requests.owner_usr_id");

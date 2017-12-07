@@ -37,38 +37,51 @@ function updateNotifications() {
 	notifications = (JSON.parse(this.responseText)).slice();
 	if(notifications.length > 0){
 		let notificationDiv = document.querySelector("#notifications");
-		console.log(notifications);
 		let notificationBox = document.querySelector("#notifications_box ul");
 		for(let i = 0; i < notifications.length; i++){
 			let li = document.createElement('li');
 			li.innerHTML = "You were invited to the list <strong>"+ notifications[i].title+"</strong> by user <em>"+notifications[i].usr_username+"</em>";
-			console.log(notificationBox);
+			let buttonAccept = document.createElement('button');
+			buttonAccept.setAttribute("class", "accept");
+			buttonAccept.innerHTML = "<i class='fa fa-check' aria-hidden='true'></i>";
+			let buttonDecline = document.createElement('button');
+			buttonDecline.setAttribute("class", "decline");
+			buttonDecline.innerHTML = "<i class='fa fa-times' aria-hidden='true'></i>";
+			li.appendChild(buttonAccept);
+			li.appendChild(buttonDecline);
 			notificationBox.appendChild(li);
-		}
-		
+		}		
 		notificationDiv.style.display = "block";
+		inviteButtonsListener();
+	}
+}
+checkNotifications();
+
+function inviteButtonsListener() {
+	let acceptInviteButtons = document.querySelectorAll(".accept");
+	let declineInviteButtons = document.querySelectorAll(".decline");
+	for(let i = 0; i < acceptInviteButtons.length; i++){
+		acceptInviteButtons[i].addEventListener("click", function(event) {
+			let request = new XMLHttpRequest();
+			request.addEventListener("load", deleteRequest);
+			request.open("get", "add_user_to_list.php?list_title="+notifications[i].title + "&owner_usr_username="+notifications[i].usr_username, true);
+			request.send();
+		});
+	}
+
+	for(let j = 0; j < declineInviteButtons.length; j++){
+		declineInviteButtons[j].addEventListener("click", function(event) {
+			let request = new XMLHttpRequest();
+			request.addEventListener("load", deleteRequest);
+			request.open("get", "remove_request.php?list_title="+notifications[j].title + "&owner_usr_username="+notifications[j].usr_username, true);
+			request.send();
+		});
 	}
 }
 
-checkNotifications();
-
-/*
-let notificationIcon = document.querySelector("#notifications i");
-
-notificationIcon.addEventListener("click", function(event){
-	lists.style.opacity = "1";
-	let notificationBox = document.getElementById("notifications_box");
-	if(notificationBox.style.display === "none"){
-		for(let i = 0; i < notifications.lenght; i++){
-			let li = "<li>You were invited to the list <strong>"+ notifications[i].title+"</strong> by user <em>"+notifications[i].usr_username+"</em></li>";
-			notificationBox.nextChild.appendChild(li);
-		}
-		notificationBox.style.display = "block";
-	} else {
-		notificationBox.style.display = "none";
-	}
-});*/
-
+function deleteRequest() {
+	location.reload();
+}
 
 /**
 	ADD AND REMOVE
