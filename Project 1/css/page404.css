@@ -1,0 +1,32 @@
+body {
+	height: 100vh;
+	background-color: #d9dde0;
+	font-family: 'Nunito', sans-serif;
+	margin: 0;
+}
+
+h1 {
+	text-align: center;
+	color: black;
+	padding: 1em;
+}
+
+a {
+	margin: 0;
+	padding: 5px;
+	position: absolute;
+	top: 80%;
+	left: 34%;
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	font-size: 2em;
+
+	box-shadow: 0 0 10px 5px black;
+	border-radius: 10px;
+}
+
+img {
+	width: 25%;
+	padding-left: 32em;
+}

@@ -311,3 +311,39 @@ span {
 #notifications #hamburger2:checked ~ #notifications_box{
 	visibility: visible;
 }
+
+#messages article {
+	animation: fadeout 5s;
+	opacity: 0;
+	max-height: 0;
+}
+
+#messages article {
+  	text-align: center;
+  	font-weight: bold;
+  	color: white;
+}
+
+#messages article p {
+  	margin: 0px;
+  	padding: 0.5em;
+}
+
+#messages article.error {
+	background-color: #F66;
+}
+
+#messages article.success {
+  	background-color: #6D6;
+}
+
+@keyframes fadeout {
+	from {
+		opacity: 1;
+		max-height: 3em;
+	}
+	to {
+		opacity: 0;
+		max-height: 3em;
+	}
+}

@@ -1,13 +1,19 @@
 <?php
 
   function isLoginCorrect($username, $password) {
-    global $dbh;
-    $usrnm = strtolower($username);
-    $stmt = $dbh->prepare('SELECT * FROM users WHERE usr_username = ? AND usr_password = ?');
-    $stmt->execute(array($usrnm, sha1($password)));
-    $cenas = $stmt->fetch();
-    echo $cenas['usr_name'];
-    return $cenas !== false;
+      global $dbh;
+
+      $usrnm = strtolower($username);
+      $stmt = $dbh->prepare('SELECT * FROM users WHERE usr_username = ?');
+      $stmt->execute(array($usrnm));
+      $user = $stmt->fetch();
+      if(password_verify($password, $user['usr_password'])) {
+        echo 'Password is valid!';
+        return true;
+      } else {
+        echo 'Invalid password.';
+        return false;
+      }
   }
 
   function notExistUser($username){
@@ -20,21 +26,19 @@
 
   function addUser($username, $name, $email, $image, $password){
     global $dbh;
+    $options = ['cost' => 12];
     $usrnm = strtolower($username);
     $stmt = $dbh->prepare('INSERT INTO users (usr_username, usr_name, usr_email, usr_image, usr_password) VALUES (?, ?, ?, ?, ?)');
-    $stmt->execute(array($usrnm, $name, $email, $image, sha1($password)));
+    $stmt->execute(array($usrnm, $name, $email, $image, password_hash($password, PASSWORD_DEFAULT, $options)));
   }
 
   function editUser($old_username, $new_username, $name, $email, $image, $password){
     global $dbh;
     $usrnm = strtolower($new_username);
-    if($usrnm != $old_username && notExistUser($usrnm)){
+    $options = ['cost' => 12];
+    if((($usrnm != $old_username) && notExistUser($usrnm)) || ($usrnm == $old_username)){
       $stmt = $dbh->prepare('UPDATE users SET usr_username = ?, usr_name = ?, usr_email = ?, usr_image = ?, usr_password =? WHERE usr_username = ?');
-      $stmt->execute(array($usrnm, $name, $email, $image, sha1($password), $old_username));
-    }
-    else if($usrnm == $old_username){
-      $stmt = $dbh->prepare('UPDATE users SET usr_username = ?, usr_name = ?, usr_email = ?, usr_image = ?, usr_password =? WHERE usr_username = ?');
-      $stmt->execute(array($usrnm, $name, $email, $image, sha1($password), $old_username));
+      $stmt->execute(array($usrnm, $name, $email, $image, password_hash($password, PASSWORD_DEFAULT, $options), $old_username));
     }
     else{
       return false;

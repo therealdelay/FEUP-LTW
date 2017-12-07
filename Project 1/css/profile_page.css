@@ -85,7 +85,14 @@ div {
 }
 
 #messages article {
+	animation: fadeout 5s;
+	opacity: 0;
+	max-height: 0;
+}
+
+#messages article {
   	text-align: center;
+  	font-weight: bold;
   	color: white;
 }
 
@@ -100,4 +107,15 @@ div {
 
 #messages article.success {
   	background-color: #6D6;
+}
+
+@keyframes fadeout {
+	from {
+		opacity: 1;
+		max-height: 3em;
+	}
+	to {
+		opacity: 0;
+		max-height: 3em;
+	}
 }
