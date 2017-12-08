@@ -97,6 +97,8 @@
 		$priority = 'p2';
 	else if($list['priority'] == 3)
 		$priority = 'p3';
+	
+	$alert = "";
 	?>
 
 	<a href="list_page.php?list_id=<?= $list['list_id']?>">
@@ -105,10 +107,22 @@
 
 			<div class="todos">
 				<?php foreach ($todos[$list['id']] as $todo) { ?>
+				<?php
+					$todoStatus;
+					if($todo['done'] == -1){
+						$todoStatus = getTimeDiff($todo['limit_date']);
+	
+					
+						if($alert != "Overtime" && $todoStatus == "Overtime")
+							$alert = "alert";
+					}
+					else
+						$todoStatus = "Done";
+				?>
+				
 				<div class="todo">
 					<p><?= $todo['name']?></p>
-					<?php $timeLeft = getTimeDiff($todo['limit_date']); ?>
-					<span><?= $timeLeft ?></span>
+					<span><?= $todoStatus ?></span>
 				</div>
 				<?php } ?>
 			</div>
@@ -124,10 +138,11 @@
 			<button name="Invite"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
 			<button name="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 			<button name="Remove"><i class="fa fa-1x fa-trash" aria-hidden="true"></i></button>
+			<i class="mark fa fa-exclamation <?= $alert?>" aria-hidden="true"></i>
 		</div>
 	</a>
 		<?php } ?>
 		<div id="ultimo">
-			<a href="#"><img src="images/addIcon.png"></a>
+			<a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
 		</div>
 </section>

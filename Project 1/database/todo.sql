@@ -98,10 +98,26 @@ BEGIN
 	SELECT RAISE(IGNORE);
 END;
 
+
+CREATE TRIGGER check_non_existing_user_requests
+BEFORE INSERT ON requests
+WHEN ((SELECT COUNT(*) FROM users WHERE usr_id = new.usr_id) = 0)
+BEGIN
+	SELECT RAISE(IGNORE);
+END;
+
+CREATE TRIGGER check_unvalid_requests
+BEFORE INSERT ON requests
+FOR EACH ROW
+WHEN ((SELECT COUNT(*) FROM belongs WHERE new.list_id = belongs.list_id AND new.usr_id = belongs.usr_id) > 0)
+BEGIN
+	SELECT RAISE(IGNORE);
+END;
+
 CREATE TRIGGER check_repeated_requests
 BEFORE INSERT ON requests
 FOR EACH ROW 
-WHEN ((SELECT COUNT(*) FROM requests WHERE requests.list_id = new.list_id 
+WHEN ((SELECT COUNT(*) FROM requests, belongs WHERE requests.list_id = new.list_id 
 				AND requests.usr_id = new.usr_id AND requests.owner_usr_id = new.owner_usr_id) > 0)
 BEGIN
 	SELECT RAISE(IGNORE);

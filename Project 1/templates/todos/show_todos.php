@@ -44,6 +44,6 @@
 	</div>
 	<?php } ?>
 	<div id="ultimo">
-		<a href="#"><img src="images/addIcon.png"></a>
+		<a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
 	</div>
 </section>

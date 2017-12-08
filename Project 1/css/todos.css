@@ -82,19 +82,40 @@ button, input[type="Submit"]{
 	transform: scale(1.05);
 }
 
-#ultimo {
-	/*
-	width: 5em;
-	height: 5em;
-	*/
-	/*background-color: white;
-	padding: 1em;
-	border-radius: 10px;
-	box-shadow: 0px 0px 10px 5px #888888;*/
+
+#ultimo a {
+	font-size: 5em;
+	max-width: 10em;
 }
 
-#ultimo img {
-	max-width: 10em;
+.list .mark{
+	display: inline;
+	margin-left: 90%;
+	display: none;
+}
+
+.list .alert {
+	display: inherit;
+	animation-duration: 2s;
+	animation-name: blink;
+	animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+  0% {
+	  font-size: 1em;
+	  color: black;
+  }
+  
+  50% {
+	   font-size: 2em;
+	   color: red;
+  }
+  
+  100% {
+	  font-size: 1em;
+	  color: black;
+  }
 }
 
 .list h2 {
@@ -305,7 +326,11 @@ span {
 #notifications_box li {
 	background-color: white;
 	padding: 1em;
+}
 
+.accept, .decline{
+	margin-left: 0.5em;
+	color: blue;
 }
 
 #notifications #hamburger2:checked ~ #notifications_box{

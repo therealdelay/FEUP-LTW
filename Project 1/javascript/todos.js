@@ -1,10 +1,10 @@
-let addButton = document.querySelector("img");
+let addButton = document.querySelector("#ultimo a");
 let addForm = document.getElementById("add_form");
 let editForm = document.getElementById("edit_form");
 let todos = document.getElementById("todos_only");
 
 let pathArray = document.URL.split( '?' );
-let list_id = pathArray[1].split('=')[1][0];
+let list_id = pathArray[1].split('=')[1].split('#')[0];
 
 let selectedTodoId = null;
 
