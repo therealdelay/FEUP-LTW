@@ -5,7 +5,7 @@
 	
 	include_once('templates/todos/time.php');
 
-	if (!isset($_SESSION['username']) || $_SESSION['username'] == ''){
+	if (!isset($_SESSION['username'])){
      	header('Location: page404.php');
 	}
 
