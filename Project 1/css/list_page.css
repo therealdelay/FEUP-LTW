@@ -77,8 +77,8 @@ button, input[type="Submit"]{
 	
 }
 
-
-#ultimo img{
+#ultimo a{
+	font-size: 5em;
 	max-width: 10em;
 }
 

@@ -10,7 +10,7 @@
 		if($days > 0)
 			$resMsg = intval($days) . " day(s) remaining";
 		else
-			$resMsg = "FODEU.";
+			$resMsg = "Overtime";
 		return $resMsg;
 	}
 	

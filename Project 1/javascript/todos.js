@@ -1,4 +1,4 @@
-let addButton = document.querySelector("img");
+let addButton = document.querySelector("#ultimo a");
 let addForm = document.getElementById("add_form");
 let editForm = document.getElementById("edit_form");
 let todos = document.getElementById("todos_only");

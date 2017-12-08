@@ -75,10 +75,6 @@
 
 	function editList($list_id, $title, $priority, $categories){
 		global $dbh;
-		$stmt = $dbh->prepare("SELECT id FROM lists ORDER BY id DESC LIMIT 1");
-		$stmt->execute();
-		$list_id = $stmt->fetch()['id'];
-
 		$stmt = $dbh->prepare("UPDATE lists SET title = ?, priority = ? WHERE id = ?");
 		$stmt->execute(array($title, $priority, $list_id));
 
