@@ -165,3 +165,42 @@ function todosEdited(){
 	todos.style.opacity = "1";
 	location.reload();
 }
+
+
+/**
+	Comments
+*/
+let addCommentButtons = document.querySelectorAll(".comments button");
+
+function addCommentButtonsListeners() {
+	for(let i = 0; i < addCommentButtons.length; i++){
+		addCommentButtons[i].addEventListener("click",function(){
+			let todo_id_comment = this.parentNode.parentNode.id;
+			let addCommentForm = document.querySelector("#\\3" + todo_id_comment + " > .comments #add_comment");
+			if(addCommentForm.style.display === "block")
+				addCommentForm.style.display = "none";
+			else
+				addCommentForm.style.display = "block";
+
+			let submitCommentButton = document.querySelector("#\\3" + todo_id_comment + " > .comments #add_comment input[name='add_comment']");
+			let cancelCommentButton = document.querySelector("#\\3" + todo_id_comment + " > .comments #add_comment input[name='cancel_comment']");
+			
+			submitCommentButton.addEventListener("click", function() {
+				let inputTextComment = document.querySelector("#\\3" + todo_id_comment + " > .comments #add_comment input[name='comment']");
+				console.log(inputTextComment);
+				let request = new XMLHttpRequest();
+				request.addEventListener("load", commentAction);
+				request.open("get", "add_comment.php?todo_id="+todo_id_comment+"&text="+inputTextComment.value, true);
+				request.send();
+			});
+			cancelCommentButton.addEventListener("click", function() {
+				addCommentForm.style.display = "none";
+			});
+		});
+	}
+}
+addCommentButtonsListeners();
+
+function commentAction() {
+	location.reload();
+}

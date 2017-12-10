@@ -186,6 +186,10 @@ span {
 	background-color: #ffcb20;
 }
 
+.check {
+	opacity: 0.6;
+}
+
 
 #add_form {
 	/*border-style: solid;*/

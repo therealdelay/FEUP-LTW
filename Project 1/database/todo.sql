@@ -52,6 +52,14 @@ CREATE TABLE requests (
 	PRIMARY KEY (usr_id, list_id, owner_usr_id)
 );
 
+CREATE TABLE comments (
+	comment_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	comment_text TEXT,
+	date_written DATE DEFAULT(Date('now')) NOT NULL,
+	usr_id INTEGER REFERENCES users NOT NULL,
+	todo_id INTEGER REFERENCES todos NOT NULL
+);
+
 /**
 	If all the users are removed from a list, the list is completely deleted from the database
 */
@@ -124,9 +132,10 @@ BEGIN
 END;
 
 
-INSERT INTO users VALUES (NULL, 'john', 'john', 'john@gmail.com', 'https://farm5.staticflickr.com/4026/4654109388_465c99f66f.jpg', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'); --1234
-INSERT INTO users VALUES (NULL, 'anadaisy', 'ana', 'ana@gmail.com', 'https://farm5.staticflickr.com/4026/4654109388_465c99f66f.jpg', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'); --1234
-INSERT INTO users VALUES (NULL, 'jack', 'jack', 'jack@gmail.com', 'https://farm5.staticflickr.com/4026/4654109388_465c99f66f.jpg', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'); --1234
+INSERT INTO users VALUES (NULL, 'test1', 'john', 'john@gmail.com', 'https://farm5.staticflickr.com/4026/4654109388_465c99f66f.jpg', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'); --1234
+INSERT INTO users VALUES (NULL, 'test2', 'ana', 'ana@gmail.com', 'https://farm5.staticflickr.com/4026/4654109388_465c99f66f.jpg', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'); --1234
+INSERT INTO users VALUES (NULL, 'test3', 'jack', 'jack@gmail.com', 'https://farm5.staticflickr.com/4026/4654109388_465c99f66f.jpg', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'); --1234
+INSERT INTO users VALUES (NULL, 'margarida', 'Margarida', 'margarida@gmail.com', 'https://farm5.staticflickr.com/4026/4654109388_465c99f66f.jpg', '$2y$12$q0xxhiA3i6Ved6wZ7hFsJ.ke3uaF58QeWFpg7IC1IMiLPLGEMr3Ei'); --Margarida1234-
 INSERT INTO categories VALUES (NULL, 'PHP');
 INSERT INTO categories VALUES (NULL, 'HTML');
 INSERT INTO categories VALUES (NULL, 'Javascript');
@@ -136,6 +145,7 @@ INSERT INTO todos VALUES (NULL, 'Fazer Landing Page', '2017-11-27', -1, 1);
 INSERT INTO todos VALUES (NULL, 'Mostrar os Todos', '2017-11-27', -1, 1);
 INSERT INTO todos VALUES (NULL, 'Fazer tudo bonito', '2017-11-27', -1, 1);
 INSERT INTO todos VALUES (NULL, 'Fazer Animações', '2018-01-01', -1, 2);
+INSERT INTO comments VALUES (NULL, 'This is very difficult! Can someone else do it?', Date('now'), 4, 1);
 INSERT INTO hasItems VALUES (1,1);
 INSERT INTO hasItems VALUES (1,2);
 INSERT INTO hasItems VALUES (1,3);
@@ -143,6 +153,7 @@ INSERT INTO hasItems VALUES (2,4);
 INSERT INTO belongs VALUES (1,1);
 INSERT INTO belongs VALUES (1,2);
 INSERT INTO belongs VALUES (1,3);
+INSERT INTO belongs VALUES (1,4);
 INSERT INTO belongs VALUES (2,1);
 INSERT INTO belongs VALUES (2,3);
 INSERT INTO hasCategories VALUES (1,1);
