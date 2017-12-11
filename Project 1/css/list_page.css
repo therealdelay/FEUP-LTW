@@ -142,3 +142,42 @@ button, input[type="Submit"]{
 	margin: auto;
 	display: block;
 }
+
+
+.comments {
+	background-color: #c3c6cc;
+	margin: 1em;
+	padding: 0.5em;
+	font-size: 12px;
+}
+
+.comment {
+	margin: 0.5em;
+}
+
+.comment p {
+	margin: 0;
+}
+
+.comment p:first-child{
+	font-weight: bold;
+	display: inline-block;
+}
+
+.comment p:first-child:after{
+	content: " :";
+}
+
+#add_comment {
+	display: none;
+}
+
+#add_comment > input[type="text"] {
+	display: block;
+}
+
+#add_comment > input[type="Submit"] {
+	padding: 0.5em;
+	font-size: 12px;
+	display: inline-block;
+}

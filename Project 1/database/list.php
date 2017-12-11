@@ -180,6 +180,24 @@
 		$stmt->execute(array($name, $todo_id));
 	}
 
+	function getTodoComments($todo_id){
+		global $dbh;
+		$stmt = $dbh->prepare("SELECT users.usr_username, comments.date_written, comments.comment_text 
+								FROM comments, users WHERE todo_id = ? AND comments.usr_id = users.usr_id");
+		$stmt->execute(array($todo_id));
+		return $stmt->fetchAll();
+	}
+
+	function addComment($username, $text, $todo_id){
+		global $dbh;
+		$stmt = $dbh->prepare("SELECT usr_id FROM users WHERE usr_username = ?");
+		$stmt->execute(array($username));
+		$usr_id = $stmt->fetch()['usr_id'];
+
+		$stmt = $dbh->prepare("INSERT INTO comments (comment_text, usr_id, todo_id) VALUES (?, ?, ?)");
+		$stmt->execute(array($text, $usr_id, $todo_id));
+	}
+
 	function inviteUser($username, $list_id, $invited_username){
 		global $dbh;
 		$stmt = $dbh->prepare("SELECT usr_id from users WHERE usr_username = ?");
@@ -249,5 +267,6 @@
 		$stmt->execute(array($username));
 		return $stmt->fetchAll();
 	}
+
 
 ?>

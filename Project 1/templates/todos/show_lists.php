@@ -99,10 +99,16 @@
 		$priority = 'p3';
 	
 	$alert = "";
+
+	$check;
+	if($list['done'] == 1)
+		$check = 'check';
+	else 
+		$check = 'not_check';
 	?>
 
 	<a href="list_page.php?list_id=<?= $list['list_id']?>">
-		<div id=<?= $list['id']?> class="list <?= $priority?>">
+		<div id=<?= $list['id']?> class="list <?= $priority?> <?= $check?>">
 			<h2><?= $list['title']?></h2>
 
 			<div class="todos">
