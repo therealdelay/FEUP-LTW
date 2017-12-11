@@ -6,9 +6,8 @@
 	
 	include_once('templates/todos/time.php');
 
-	echo $_SESSION['username'];
 	if (!isset($_SESSION['username'])){
-     	//header('Location: page404.php');
+     	header('Location: page404.php');
 	}
     else{
 		$lists = getAllLists($_SESSION['username']);
