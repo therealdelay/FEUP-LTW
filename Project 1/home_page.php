@@ -1,14 +1,15 @@
 <?php
-	include_once('includes/init.php');
+	include_once('includes/session.php');
+	include_once('database/connection.php');
 
 	include_once('database/list.php');
 	
 	include_once('templates/todos/time.php');
 
+	echo $_SESSION['username'];
 	if (!isset($_SESSION['username'])){
-     	header('Location: page404.php');
+     	//header('Location: page404.php');
 	}
-
     else{
 		$lists = getAllLists($_SESSION['username']);
 
