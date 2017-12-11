@@ -33,7 +33,7 @@
 
 		<div id=<?= $todo['todo_id']?> class="todo_only <?= $check ?>">
 			<h3><?= $todo['name']?></h3>
-			<span><?= $todo['limit_date']?></span>
+			<span><?= date_format(date_create($todo['limit_date']), "d/m/Y")?></span>
 				<button name="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 			<?php if($todo['done'] == 1){?>
 				<button name="Check"><i class="fa fa-check-square-o" aria-hidden="true"></i></button>
@@ -41,11 +41,18 @@
 				<button name="Check"><i class="fa fa-square-o" aria-hidden="true"></i></button>
 			<?php } ?>
 				<button name="Remove"><i class="fa fa-1x fa-trash" aria-hidden="true"></i></button>
-				<section class="comments">
+				<?php
+					$class; 
+					if(sizeof($comments[$todo['todo_id']]) > 0)
+						$class = "comments";
+					else
+						$class = "no_comments";
+				?>
+				<section class=<?= $class ?>>
 					<?php foreach($comments[$todo['todo_id']] as $comment){?>
 						<article class="comment">
 							<p><?=$comment['usr_username']?></p>
-							<span><?=$comment['date_written']?></span>
+							<span><?=date_format(date_create($comment['date_written']), "d/m/Y")?></span>
 							<p><?=$comment['comment_text']?></p>
 						</article>
 					<?php } ?>

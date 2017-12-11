@@ -8,10 +8,8 @@
       $stmt->execute(array($usrnm));
       $user = $stmt->fetch();
       if(password_verify($password, $user['usr_password'])) {
-        echo 'Password is valid!';
         return true;
       } else {
-        echo 'Invalid password.';
         return false;
       }
   }
@@ -44,5 +42,12 @@
       return false;
     }
     return true;
+  }
+
+  function deleteUser($username){
+    global $dbh;
+    $stmt = $dbh->prepare("DELETE FROM users WHERE usr_username = ?");
+    $stmt->execute(array($username));
+
   }
 ?>

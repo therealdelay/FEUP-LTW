@@ -57,7 +57,7 @@ button, input[type="Submit"]{
 
 .todo_only {
 	background-color: white;
-	padding: 0 1em;
+	padding: 0 1em 1em 1em;
 	margin: 0 auto;
 	border: 1px solid #888888;
 	border-radius: 10px;
@@ -65,17 +65,11 @@ button, input[type="Submit"]{
 	transition: transform 0.5s;
 }
 
-.todo_only h3 {
-	
-}
-
 .todo_only span {
+	font-size: 14px;
 	float: right;
 }
 
-.todo_only button {
-	
-}
 
 #ultimo a{
 	font-size: 5em;
@@ -145,11 +139,23 @@ button, input[type="Submit"]{
 
 
 .comments {
-	background-color: #c3c6cc;
+	background-color: #dee1e5;
 	margin: 1em;
 	padding: 0.5em;
 	font-size: 12px;
+	overflow-y: auto;
+	max-height: 10em;
 }
+
+.no_comments {
+	background-color: white;
+	display: inline-block;
+}
+
+.no_comments button {
+	font-size: 13px;
+}
+
 
 .comment {
 	margin: 0.5em;

@@ -61,9 +61,20 @@ CREATE TABLE comments (
 );
 
 /**
+	Deletes all thing of a user when this one is deleted
+*/
+CREATE TRIGGER remove_user_info
+AFTER DELETE ON users
+FOR EACH ROW 
+BEGIN
+	DELETE FROM belongs WHERE usr_id = old.usr_id;
+	DELETE FROM comments WHERE usr_id = old.usr_id;
+	DELETE FROM requests WHERE usr_id = old.usr_id;
+END;
+
+/**
 	If all the users are removed from a list, the list is completely deleted from the database
 */
-
 CREATE TRIGGER list_user
 AFTER DELETE ON belongs
 FOR EACH ROW 
