@@ -31,6 +31,15 @@ button, input[type="Submit"]{
 	color: black;
 }
 
+input {
+	border: 0;
+	border-bottom: 1px solid #a6acb5;
+	text-align: center;
+	background-color: inherit;
+	padding: 0.5em 0.5em 0 0.5em;
+	color: black;
+}
+
 #user {
 	float: right;
 }

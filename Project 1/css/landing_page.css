@@ -23,11 +23,35 @@ a {
 	color: black;
 }
 
+#user {
+	float: right;
+	display: inline-block;
+}
+
+#user a {
+	margin: 0 1em;
+}
+
+#user input {
+	max-width: 10em;
+	display: inline-block;
+}
+
+input {
+	border: 0;
+	border-bottom: 1px solid #a6acb5;
+	text-align: center;
+	background-color: white;
+	padding: 0.5em 0.5em 0 0.5em;
+	color: black;
+}
+
 button, input[type="Submit"]{
 	float: right;
 	padding: 0.3em 1em;
 	background-color: white;
 	border: 1px solid #d9dde0;
+	color: black;
 }
 
 button, input[type="button"]{
@@ -35,15 +59,9 @@ button, input[type="button"]{
 	padding: 0.3em 1em;
 	background-color: white;
 	border: 1px solid #d9dde0;
+	color: black;
 }
 
-#user {
-	float: right;
-}
-
-#user a {
-	margin: 0 1em;
-}
 
 * > body {
 	background-image: url("../images/intro.png");
