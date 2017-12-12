@@ -93,6 +93,10 @@ button {
 	transform: scale(1.2);
 }
 
+#delete_profile:hover {
+	transform: scale(1.1);	
+}
+
 #edit_profile:hover {
 	transform: scale(1.1);	
 }
