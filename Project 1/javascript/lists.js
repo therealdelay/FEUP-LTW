@@ -142,7 +142,7 @@ function addEditButtonsListeners(){
 
 			selectedListId = this.parentNode.id;
 			listEditNameText.value = this.parentNode.childNodes[1].innerHTML;
-			let priorityString = this.parentNode.classList[this.parentNode.classList.length-1];
+			let priorityString = this.parentNode.classList[this.parentNode.classList.length-2];
 			listEditPriority.value = priorities[priorityString];
 			editForm.style.display = "inline";
 			lists.style.opacity = "0.5";
@@ -264,8 +264,6 @@ function getCategories() {
 		newInput.setAttribute("name", "category");
 		newInput.value = categories[cat]['cat_name'];
 		divNewCategories.appendChild(newInput);
-		console.log(newInput);
-		console.log(divNewCategories);
 	}
 }
 
