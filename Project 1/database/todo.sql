@@ -89,13 +89,23 @@ END;
 /**
 	If all the todos of a list are checked, the list is completely done
 */
-
 CREATE TRIGGER check_list_done
 AFTER UPDATE ON todos
 FOR EACH ROW
 WHEN ((SELECT COUNT(*) FROM todos WHERE todos.done = 1 AND todos.list_id = old.list_id) = (SELECT COUNT(*) FROM todos WHERE todos.list_id = old.list_id))
 BEGIN
 	UPDATE lists SET done = 1 WHERE id = old.list_id; 
+END;
+
+/**
+	If one of the todos of a list ins't checked, the list isn't completely done
+*/
+CREATE TRIGGER check_list_not_done
+AFTER UPDATE ON todos
+FOR EACH ROW
+WHEN ((SELECT COUNT(*) FROM todos WHERE todos.done = -1 AND todos.list_id = old.list_id) > 0 )
+BEGIN
+	UPDATE lists SET done = -1 WHERE id = old.list_id; 
 END;
 
 /**
