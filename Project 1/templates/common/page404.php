@@ -10,6 +10,6 @@
 <body>
 	<h1>404 you should not be here</h1>
 	<img src="images/stop.jpeg" alt="stop">
-	<a href="index.php">Go back to where you belong<br>
+	<a href="index.php">Go back to where you belong<br></a>
 </body>
 </html>

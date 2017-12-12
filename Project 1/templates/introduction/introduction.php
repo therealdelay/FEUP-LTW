@@ -1,3 +1,3 @@
 <div id="jumbotron">
-	<a href="templates/common/register_form.php"><button>Get Started</button></a>
+	<button onclick="location.href='templates/common/register_form.php'">Get Started</button>
 </div>

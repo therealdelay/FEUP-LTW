@@ -90,7 +90,7 @@ function deleteRequest() {
 
 let listTitleText = document.querySelector("#add_form input[name='title']");
 let listPriorityText = document.querySelector("#add_form select");
-let addCategoryButton = document.getElementById("add_category");
+let addCategoryButton = document.getElementById("add_category_add_form");
 let addListButton = document.querySelector("input[value='Add']");
 let cancelListButton = document.querySelector("input[value='Cancel']");
 
@@ -104,13 +104,13 @@ let listEditPriority = document.querySelector("#edit_form select");
 let listEditCategories = document.querySelector("#edit_form #categories");
 
 // Edit Form Button Selectors
-let addEditCategoryButton = document.querySelector("#edit_form #add_category");
+let addEditCategoryButton = document.querySelector("#edit_form #add_category_edit_form");
 let saveListEditButton = document.querySelector("#edit_form input[value='Save']");
 let cancelListEditButton = document.querySelector("#edit_form input[value='Cancel']");
 
 // List Buttons Selectors
-let listEditButtons = document.querySelectorAll(".list button[name='Edit']");
-let listRemoveButtons = document.querySelectorAll(".list button[name='Remove']");
+let listEditButtons = document.querySelectorAll(".list input[name='Edit']");
+let listRemoveButtons = document.querySelectorAll(".list input[name='Remove']");
 
 let maxNewCategory = 3;
 let countNewCategory = 0;
@@ -154,7 +154,7 @@ addEditButtonsListeners();
 
 function addCategoryHandler(event){
 	if(countNewCategory < maxNewCategory){
-		let divNewCategories = document.querySelector("#add_form #new_categories");
+		let divNewCategories = document.querySelector("#add_form .new_categories");
 		let newInput = document.createElement("input");
 		newInput.setAttribute("type", "text");
 		newInput.setAttribute("placeholder", "new category");
@@ -166,7 +166,7 @@ function addCategoryHandler(event){
 
 function addEditCategoryHandler(event){
 	if(countNewCategory < maxNewCategory){
-		let divNewCategories = document.querySelector("#edit_form #new_categories");
+		let divNewCategories = document.querySelector("#edit_form .new_categories");
 		let newInput = document.createElement("input");
 		newInput.setAttribute("type", "text");
 		newInput.setAttribute("placeholder", "new category");
@@ -250,7 +250,7 @@ function listRemoved() {
 
 function getCategories() {
 	let categories = JSON.parse(this.responseText);
-	let divNewCategories = document.querySelector("#edit_form #new_categories");
+	let divNewCategories = document.querySelector("#edit_form .new_categories");
 	divNewCategories.innerHTML = "";
 	
 	for (cat in categories) {
@@ -269,7 +269,7 @@ function getCategories() {
 /**
 	Invite new users to the list
 */
-let inviteUserButtons = document.querySelectorAll(".list button[name='Invite']");
+let inviteUserButtons = document.querySelectorAll(".list input[name='Invite']");
 let inviteUserForm = document.getElementById("invite_user_form");
 let addNewUserButton = document.querySelector("#invite_user_form input[value='Add']");
 let cancelNewUserButton = document.querySelector("#invite_user_form input[value='Cancel']");

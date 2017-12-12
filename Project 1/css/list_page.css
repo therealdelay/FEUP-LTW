@@ -183,15 +183,15 @@ input {
 	content: " :";
 }
 
-#add_comment {
+.add_comment {
 	display: none;
 }
 
-#add_comment > input[type="text"] {
+.add_comment > input[type="text"] {
 	display: block;
 }
 
-#add_comment > input[type="Submit"] {
+.add_comment > input[type="Submit"] {
 	padding: 0.5em;
 	font-size: 12px;
 	display: inline-block;

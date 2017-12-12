@@ -97,28 +97,28 @@ button {
 	transform: scale(1.1);	
 }
 
-#messages article {
+#messages div {
 	animation: fadeout 5s;
 	opacity: 0;
 	max-height: 0;
 }
 
-#messages article {
+#messages div {
   	text-align: center;
   	font-weight: bold;
   	color: white;
 }
 
-#messages article p {
+#messages div p {
   	margin: 0px;
   	padding: 0.5em;
 }
 
-#messages article.error {
+#messages div.error {
 	background-color: #F66;
 }
 
-#messages article.success {
+#messages div.success {
   	background-color: #6D6;
 }
 

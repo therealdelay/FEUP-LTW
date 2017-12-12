@@ -9,8 +9,8 @@
 			<option value="3">Low</option>
 		</select>
 	</label>
-	<button id="add_category">Add New Category</button>
-	<div id="new_categories"></div>
+	<button id="add_category_add_form">Add New Category</button>
+	<div class="new_categories"></div>
 	<input type="submit" value="Add">
 	<input type="submit" value="Cancel">
 </div>
@@ -27,8 +27,8 @@
 			<option value="3">Low</option>
 		</select>
 	</label>
-	<button id="add_category">Add New Category</button>
-	<div id="new_categories"></div>
+	<button id="add_category_edit_form">Add New Category</button>
+	<div class="new_categories"></div>
 	<input type="submit" value="Save">
 	<input type="submit" value="Cancel">
 </div>
@@ -107,8 +107,9 @@
 		$check = 'not_check';
 	?>
 
-	<a href="list_page.php?list_id=<?= $list['list_id']?>">
-		<div id=<?= $list['id']?> class="list <?= $priority?> <?= $check?>">
+	<!--<a href="list_page.php?list_id=<?= $list['list_id']?>">-->
+	<div>
+		<div id=<?= $list['id']?> class="list <?= $priority?> <?= $check?>" onclick="location.href='list_page.php?list_id=<?= $list['list_id']?>'">
 			<h2><?= $list['title']?></h2>
 
 			<div class="todos">
@@ -146,7 +147,8 @@
 			<button name="Remove"><i class="fa fa-1x fa-trash" aria-hidden="true"></i></button>
 			<i class="mark fa fa-exclamation <?= $alert?>" aria-hidden="true"></i>
 		</div>
-	</a>
+	</div>
+	<!--</a>-->
 		<?php } ?>
 		<div id="ultimo">
 			<a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>

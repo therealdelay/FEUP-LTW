@@ -20,7 +20,7 @@
 	<input type="submit" value="Cancel">
 </div>
 
-<section id="todos_only">
+<div id="todos_only">
 	<?php foreach ($todos as $todo) { ?>
 
 		<?php
@@ -48,24 +48,24 @@
 					else
 						$class = "no_comments";
 				?>
-				<section class=<?= $class ?>>
+				<div class=<?= $class ?>>
 					<?php foreach($comments[$todo['todo_id']] as $comment){?>
-						<article class="comment">
+						<div class="comment">
 							<p><?=$comment['usr_username']?></p>
 							<span><?=date_format(date_create($comment['date_written']), "d/m/Y")?></span>
 							<p><?=$comment['comment_text']?></p>
-						</article>
+						</div>
 					<?php } ?>
 					<button><i class="fa fa-comment" aria-hidden="true"></i></button>
-					<div id="add_comment">
+					<div class="add_comment">
 						<input type="text" placeholder="write here your comment" name="comment">
 						<input type="submit" name="add_comment" value="Add">
 						<input type="submit" name="cancel_comment" value="Cancel">
 					</div>
-				</section>
+				</div>
 		</div>
 	<?php } ?>
 	<div id="ultimo">
 		<a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
 	</div>
-</section>
+</div>

@@ -57,17 +57,13 @@ input {
 	display: inline;
 }
 
-#lists a {
+#lists a{
 	text-decoration: none;
 	color: black;
 }
 
 #lists {
 	margin: 2em;
-	/*display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: flex-start;*/
 	display: grid;
 	grid-template-columns: 25% 25% 25% 25%;
   	grid-template-rows: auto;
@@ -83,7 +79,6 @@ input {
 	padding: 1em;
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px 5px #888888;
-
 	transition: transform 0.5s;
 }
 
@@ -142,7 +137,6 @@ input {
 	display: block;
 	margin: 0 0.5em;
 	border-radius: 10px;
-	/*box-shadow: 0px 0px 10px 5px #888888;*/
 }
 
 .todo {
@@ -350,28 +344,28 @@ span {
 	visibility: visible;
 }
 
-#messages article {
+#messages div {
 	animation: fadeout 5s;
 	opacity: 0;
 	max-height: 0;
 }
 
-#messages article {
+#messages div {
   	text-align: center;
   	font-weight: bold;
   	color: white;
 }
 
-#messages article p {
+#messages div p {
   	margin: 0px;
   	padding: 0.5em;
 }
 
-#messages article.error {
+#messages div.error {
 	background-color: #F66;
 }
 
-#messages article.success {
+#messages div.success {
   	background-color: #6D6;
 }
 

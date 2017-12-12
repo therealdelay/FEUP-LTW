@@ -14,15 +14,15 @@
 		<h1>To Do</h1>
 		<?php include_once('templates/common/user.php'); ?>
 	</header>
-	<section id="messages">
+	<div id="messages">
       <?php $errors = getErrorMessages();foreach ($errors as $error) { ?>
-      <article class="error">
+      <div class="error">
         <p><?=$error?></p>
-      </article>
+      </div>
       <?php } ?>
       <?php $successes = getSuccessMessages();foreach ($successes as $success) { ?>
-      <article class="success">
+      <div class="success">
         <p><?=$success?></p>
-      </article>
+      </div>
       <?php } clearMessages(); ?>
-    </section>
+    </div>
