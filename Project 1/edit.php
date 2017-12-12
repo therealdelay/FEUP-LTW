@@ -23,6 +23,12 @@ if(preg_match('/[$chars]*(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}/', $_POST['new_pa
   header('Location: profile_page.php');
 }
 
+if(!isLoginCorrect($_SESSION['username'], $_POST['old_password'])){
+  $_SESSION['error_messages'][] = "Edition Failed!";
+  header('Location: profile_page.php');
+  return;
+}
+
 if(!editUser($_SESSION['username'],$_POST['new_username'], $_POST['name'],$_POST['email'], $_POST['image'], $_POST['new_password'])){
   $_SESSION['error_messages'][] = "Edition Failed!";
   header('Location: profile_page.php');
