@@ -107,7 +107,6 @@
 		$check = 'not_check';
 	?>
 
-	<!--<a href="list_page.php?list_id=<?= $list['list_id']?>">-->
 	<div>
 		<div id=<?= $list['id']?> class="list <?= $priority?> <?= $check?>" onclick="location.href='list_page.php?list_id=<?= $list['list_id']?>'">
 			<h2><?= $list['title']?></h2>
@@ -148,7 +147,6 @@
 			<i class="mark fa fa-exclamation <?= $alert?>" aria-hidden="true"></i>
 		</div>
 	</div>
-	<!--</a>-->
 		<?php } ?>
 		<div id="ultimo">
 			<a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>

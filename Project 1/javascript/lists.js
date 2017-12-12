@@ -109,8 +109,8 @@ let saveListEditButton = document.querySelector("#edit_form input[value='Save']"
 let cancelListEditButton = document.querySelector("#edit_form input[value='Cancel']");
 
 // List Buttons Selectors
-let listEditButtons = document.querySelectorAll(".list input[name='Edit']");
-let listRemoveButtons = document.querySelectorAll(".list input[name='Remove']");
+let listEditButtons = document.querySelectorAll(".list button[name='Edit']");
+let listRemoveButtons = document.querySelectorAll(".list button[name='Remove']");
 
 let maxNewCategory = 3;
 let countNewCategory = 0;
@@ -118,7 +118,9 @@ let countNewCategory = 0;
 function addRemoveButtonsListeners(){
 	for(let i = 0; i < listRemoveButtons.length; i++){
 		listRemoveButtons[i].addEventListener("click",function(event){
-			event.preventDefault();
+			event.cancelBubble = true;
+   			if(event.stopPropagation) event.stopPropagation();
+
 			let request = new XMLHttpRequest();
 			request.addEventListener("load", listRemoved);
 			request.open("get", "remove_list.php?list_id="+this.parentNode.id, true);
@@ -132,7 +134,9 @@ function addRemoveButtonsListeners(){
 function addEditButtonsListeners(){
 	for(let i = 0; i < listEditButtons.length; i++){
 		listEditButtons[i].addEventListener("click",function(event){
-			event.preventDefault();
+			event.cancelBubble = true;
+   			if(event.stopPropagation) event.stopPropagation();
+
 			let request = new XMLHttpRequest();
 			request.addEventListener("load", getCategories);
 
@@ -269,7 +273,7 @@ function getCategories() {
 /**
 	Invite new users to the list
 */
-let inviteUserButtons = document.querySelectorAll(".list input[name='Invite']");
+let inviteUserButtons = document.querySelectorAll(".list button[name='Invite']");
 let inviteUserForm = document.getElementById("invite_user_form");
 let addNewUserButton = document.querySelector("#invite_user_form input[value='Add']");
 let cancelNewUserButton = document.querySelector("#invite_user_form input[value='Cancel']");
@@ -277,8 +281,10 @@ let cancelNewUserButton = document.querySelector("#invite_user_form input[value=
 function addInviteUserButtonsListener(){
 	for(let i = 0; i < inviteUserButtons.length; i++){
 		inviteUserButtons[i].addEventListener("click", function(event){
+			event.cancelBubble = true;
+   			if(event.stopPropagation) event.stopPropagation();
+   			
 			selectedListId = this.parentNode.id;
-			event.preventDefault();
 			inviteUserForm.style.display = "inline";
 			lists.style.opacity = "0.5";
 		});
