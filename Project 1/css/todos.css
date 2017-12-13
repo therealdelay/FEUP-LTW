@@ -143,11 +143,11 @@ input {
 	background-color: white;
 	position: relative;
 	padding: 0.5em;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .todo span {
-	font-size: 12px;
+	font-size: 10px;
 }
 /*
 .todo:first-child {
@@ -164,7 +164,7 @@ input {
 	display: inline;
 }
 
-span {
+.todo span {
 	margin-left: 2em;
 	float: right;
 }
