@@ -1,35 +1,14 @@
 # FEUP-LTW
 Web application to store and share to-do lists developed in LTW.
 
-Must
+### Landing Page
+![1](https://user-images.githubusercontent.com/22330550/35038912-314820d0-fb74-11e7-886a-3745fd19d7c9.png)
 
--Register a new account
+### Register Form
+![2](https://user-images.githubusercontent.com/22330550/35038931-3c440bc0-fb74-11e7-91b3-f0f0c445d108.png)
 
--Login and logout
+### To do Lists
+![3](https://user-images.githubusercontent.com/22330550/35038932-3f02b622-fb74-11e7-837e-a06dcc974a73.png)
 
--Edit user profiles
-
--List to-do lists
-
--Create new to-do lists
-
--Add items to a to-do list
-
--Mark an item as completed
-
--Delete a to-do list
-
-
-Extra
-
--Add extra info to to-do lists
-
--Add extra info to items
-
--Allow items to be assigned to other users
-
--Show the list of items assigned to the current user
-
--Allow the creation of projects (with a ser of users and to-do lists)
-
--Advanced search capabilities
+### Profile Page
+![4](https://user-images.githubusercontent.com/22330550/35038933-3f1e90ea-fb74-11e7-978d-53825cd94375.png)
